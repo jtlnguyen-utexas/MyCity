@@ -18,9 +18,6 @@ class TestTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        self.tableView.layer.borderWidth = 2.0
-        self.tableView.layer.borderColor = UIColor.cyan.cgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +41,7 @@ class TestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
+        // For Testing
         cell.textLabel!.text = "Event"
         cell.detailTextLabel!.text = "10/9/2016"
         // Configure the cell...
