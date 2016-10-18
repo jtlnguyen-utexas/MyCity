@@ -1,21 +1,17 @@
 //
-//  LoginViewController.swift
+//  TestMainViewController.swift
 //  MyCity
 //
-//  Created by Alec Griffin on 10/16/16.
+//  Created by Alec Griffin on 10/17/16.
 //  Copyright © 2016 cs378. All rights reserved.
 //
 
 import UIKit
-import Firebase
 
-class LoginViewController: UIViewController {
-    
+class TestMainViewController: UIViewController {
 
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var email: UITextField!
-    
-    
+    @IBOutlet weak var registerContainer: UIView!
+    @IBOutlet weak var loginContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +24,19 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginBtn(_ sender: AnyObject) {
-        let successfulLogin = DatabaseManager.signInUser(email: self.email.text!, password: self.password.text!, viewcontroller: self.parent!)
+    @IBAction func showComponent(_ sender: AnyObject) {
+        if sender.selectedSegmentIndex == 0{
+            UIView.animate(withDuration: 0.2, animations: {
+                self.registerContainer.alpha = 1
+                self.loginContainer.alpha = 0
+            })
+        } else {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.registerContainer.alpha = 0
+                self.loginContainer.alpha = 1
+            })
+        }
     }
-    
-    // Handle the situation when the user doesn't have an account
-    @IBAction func noUserAccountBtn(_ sender: AnyObject) {
-        
-    }
-    
-    
-    // Handle the situation when the user has forgoten his password
-    @IBAction func forgotPasswordBtn(_ sender: AnyObject) {
-        
-    }
-    
-    
 
     /*
     // MARK: - Navigation
