@@ -14,6 +14,7 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var retypedPassword: UITextField!
     
+    @IBOutlet weak var accountType: UISegmentedControl!
     
     
 
@@ -30,6 +31,14 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func createAccountBtn(_ sender: AnyObject) {
         let successfulAccountCreation = DatabaseManager.createNewUser(email: email.text!, password: password.text!, retypedPassword: retypedPassword.text!, viewcontroller: self)
+        if accountType.selectedSegmentIndex == 0 {
+            let vc = self.storyboard? .instantiateViewController(withIdentifier: "userCreate")
+            self.present(vc!, animated: true, completion: nil)
+        }
+        else {
+            let vc = self.storyboard? .instantiateViewController(withIdentifier: "orgCreate")
+            self.present(vc!, animated: true, completion: nil)
+        }
     }
 
     /*
