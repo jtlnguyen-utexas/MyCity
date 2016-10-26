@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pjs-uZ-7Vo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pjs-uZ-7Vo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -31,7 +31,7 @@
         <scene sceneID="gb9-9h-ifb">
             <objects>
                 <navigationController id="XtP-6S-kLn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Event List" id="loB-Pz-3Ri"/>
+                    <tabBarItem key="tabBarItem" title="Event List" image="list-fat-7" selectedImage="list-fat-7" id="loB-Pz-3Ri"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jF1-ni-D0N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -57,7 +57,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iv1-UF-9b1" id="T68-mS-mTz">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BzW-tH-6Yd">
@@ -135,7 +135,7 @@
                     <navigationItem key="navigationItem" id="FHU-RV-NY5">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" id="7sN-ny-S5g">
-                            <rect key="frame" x="66" y="8" width="244" height="29"/>
+                            <rect key="frame" x="65.5" y="7.5" width="244" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
@@ -215,7 +215,7 @@
                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vmb-6d-sfp" id="0Pi-ie-l56">
-                                    <frame key="frameInset" width="343" height="44"/>
+                                    <frame key="frameInset" width="343" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1O-I4-kqF">
@@ -469,11 +469,11 @@
                                 <rect key="frame" x="0.0" y="28" width="316" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RNe-ks-L6D" id="5Wv-r7-djM">
-                                    <frame key="frameInset" width="316" height="43"/>
+                                    <frame key="frameInset" width="316" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="as7-iF-MR8">
-                                            <frame key="frameInset" minX="15" width="286" height="43"/>
+                                            <frame key="frameInset" minX="15" width="286" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -707,7 +707,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
         <scene sceneID="RGD-l8-0YV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fTb-8s-DhC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Event Map" id="02q-6t-woi"/>
+                    <tabBarItem key="tabBarItem" title="Event Map" image="paper-map-7" selectedImage="paper-map-7" id="02q-6t-woi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mLh-V2-YVz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -726,7 +726,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
         <scene sceneID="LBx-fq-bgZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tq3-qT-LDB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="v4G-eA-zpg"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" selectedImage="gear" id="v4G-eA-zpg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rfg-UX-cSv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -788,6 +788,11 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
             <point key="canvasLocation" x="975" y="-1961"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear" width="30" height="30"/>
+        <image name="list-fat-7" width="30" height="30"/>
+        <image name="paper-map-7" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="73Z-2h-5am"/>
         <segue reference="asl-CD-o0H"/>
