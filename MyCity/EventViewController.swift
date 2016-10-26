@@ -1,14 +1,14 @@
 //
-//  OrgPreferenceViewController.swift
+//  EventViewController.swift
 //  MyCity
 //
-//  Created by Nelia Perez on 10/25/16.
+//  Created by Hamza Muhammad on 10/26/16.
 //  Copyright © 2016 cs378. All rights reserved.
 //
 
 import UIKit
 
-class OrgCreateViewController: UIViewController {
+class EventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +30,4 @@ class OrgCreateViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    // MARK: Action
-    
-    @IBAction func cancelBtnClicked(_ sender: AnyObject) {
-    }
-    
-    @IBAction func nextBtnClicked(_ sender: AnyObject) {
-    }
 }

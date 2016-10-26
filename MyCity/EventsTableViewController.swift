@@ -1,18 +1,15 @@
 //
-//  OrgPreferenceTableViewController.swift
+//  EventsTableViewController.swift
 //  MyCity
 //
-//  Created by Nelia Perez on 10/25/16.
+//  Created by Hamza Muhammad on 10/26/16.
 //  Copyright © 2016 cs378. All rights reserved.
 //
 
 import UIKit
 
-class OrgPreferenceTableViewController: UITableViewController {
+class EventsTableViewController: UITableViewController {
 
-    let preferenceList = ["nightlife", "sports", "food", "free"]
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,24 +29,23 @@ class OrgPreferenceTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return preferenceList.count
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "orgPreferenceCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel!.text = preferenceList[(indexPath as NSIndexPath).row]
-        
+
         return cell
     }
-     
+    */
 
     /*
     // Override to support conditional editing of the table view.

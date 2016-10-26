@@ -10,45 +10,60 @@ import UIKit
 
 class CreateAccountViewController: UIViewController {
     
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var retypedPassword: UITextField!
-    
-    @IBOutlet weak var accountType: UISegmentedControl!
-    
-    
+    @IBOutlet var emailField: UITextField!
+    @IBOutlet var passwordField: UITextField!
+    @IBOutlet var rePasswordField: UITextField!
 
+    @IBOutlet var alertLabel: UILabel!
+    
+    @IBAction func userCreateButton(_ sender: AnyObject) {
+        if passwordField.text == rePasswordField.text {
+            performSegue(withIdentifier: "UserCreateSegue", sender: nil)
+        }
+        else {
+            alertLabel.text = "Passwords do not match!"
+        }
+    }
+    
+    @IBAction func orgCreateButton(_ sender: AnyObject) {
+        if passwordField.text == rePasswordField.text {
+            performSegue(withIdentifier: "OrgCreateSegue", sender: nil)
+        }
+        else {
+            alertLabel.text = "Passwords do not match!"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        alertLabel.text = ""
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func createAccountBtn(_ sender: AnyObject) {
-        let successfulAccountCreation = DatabaseManager.createNewUser(email: email.text!, password: password.text!, retypedPassword: retypedPassword.text!, viewcontroller: self)
-        if accountType.selectedSegmentIndex == 0 {
-            let vc = self.storyboard? .instantiateViewController(withIdentifier: "userCreate")
-            self.present(vc!, animated: true, completion: nil)
-        }
-        else {
-            let vc = self.storyboard? .instantiateViewController(withIdentifier: "orgCreate")
-            self.present(vc!, animated: true, completion: nil)
-        }
-    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "UserCreateSegue" {
+            let userCreateViewController = segue.destination as! UserCreateViewController
+            userCreateViewController.userEmail = emailField.text
+            userCreateViewController.userPassword = passwordField.text
+        }
+        
+        if segue.identifier == "OrgCreateSegue" {
+            //TODO LATER
+//            let orgCreateViewController = segue.destination as! OrgCreateViewController
+//            userCreateViewController.userEmail = emailField.text
+//            userCreateViewController.userPassword = passwordField.text
+        }
     }
-    */
-
 }
