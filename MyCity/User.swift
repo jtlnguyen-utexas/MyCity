@@ -15,6 +15,7 @@ class User: NSObject {
     
     private var userRef: FIRDatabaseReference?
     
+    private var _isUser: Bool = true
     private var _userKey: String!
     private var _firstName: String!
     private var _lastName: String!
@@ -27,6 +28,10 @@ class User: NSObject {
     private var _radius: Float!
     private var _checkInRatio: String!
     private var _numEventsAttended: Int!
+    
+    var isUser: Bool {
+        return _isUser
+    }
     
     var userKey: String {
         return _userKey
@@ -92,12 +97,12 @@ class User: NSObject {
         self._radius = radius
         self._checkInRatio = checkInRatio
         self._numEventsAttended = numEventsAttended
-        
     }
     
     init(snapshot: FIRDataSnapshot) {
         _userKey = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
+        _isUser = snapshotValue["isUser"] as! Bool
         _firstName = snapshotValue["firstName"] as! String
         _lastName = snapshotValue["lastName"] as! String
         _emailAddress = snapshotValue["emailAddress"] as! String
@@ -114,6 +119,7 @@ class User: NSObject {
     
     func toAnyObject() -> Any {
         return [
+            "isUser": _isUser,
             "userKey": _userKey,
             "firstName": _firstName,
             "lastName": _lastName,

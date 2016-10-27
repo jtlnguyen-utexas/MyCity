@@ -14,6 +14,7 @@ import FirebaseAuth
 class InitialViewController: UIViewController {
     
     var currentUser: User?
+    var currentOrg: Org?
     
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
@@ -51,23 +52,44 @@ class InitialViewController: UIViewController {
                         
                         // Get user values
                         let value = snapshot.value as? NSDictionary
-                        let userKey = value?["userKey"] as! String
-                        let firstName = value?["firstName"] as! String
-                        let lastName = value?["lastName"] as! String
-                        let emailAddress = value?["emailAddress"] as! String
-                        let location = value?["location"] as! String
-                        let nightlife = value?["nightlife"] as! Bool
-                        let sports = value?["sports"] as! Bool
-                        let food = value?["food"] as! Bool
-                        let free = value?["free"] as! Bool
-                        let radius = value?["radius"] as! Float
-                        let checkInRatio = value?["checkInRatio"] as! String
-                        let numEventsAttended = value?["numEventsAttended"] as! Int
-                        self.currentUser = User(userKey: userKey, firstName: firstName, lastName: lastName, emailAddress: emailAddress, location: location, nightlife: nightlife, sports: sports, food: food, free: free, radius: radius, checkInRatio: checkInRatio, numEventsAttended: numEventsAttended)
                         
-                        print("retrieved user! user email: \(self.currentUser?.emailAddress)")
-                        self.performSegue(withIdentifier: "LoginSegue", sender: nil)
-                    }) { (error) in
+                        let isUser = value?["isUser"] as! Bool
+                        
+                        if isUser == true {
+                            // means we are dealing with a USER object
+                            let userKey = value?["userKey"] as! String
+                            let firstName = value?["firstName"] as! String
+                            let lastName = value?["lastName"] as! String
+                            let emailAddress = value?["emailAddress"] as! String
+                            let location = value?["location"] as! String
+                            let nightlife = value?["nightlife"] as! Bool
+                            let sports = value?["sports"] as! Bool
+                            let food = value?["food"] as! Bool
+                            let free = value?["free"] as! Bool
+                            let radius = value?["radius"] as! Float
+                            let checkInRatio = value?["checkInRatio"] as! String
+                            let numEventsAttended = value?["numEventsAttended"] as! Int
+                            self.currentUser = User(userKey: userKey, firstName: firstName, lastName: lastName, emailAddress: emailAddress, location: location, nightlife: nightlife, sports: sports, food: food, free: free, radius: radius, checkInRatio: checkInRatio, numEventsAttended: numEventsAttended)
+                            
+                            print("retrieved user! user email: \(self.currentUser?.emailAddress)")
+                            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+                        }
+                        else {
+                            // have an ORG object
+                            let orgKey = value?["orgKey"] as! String
+                            let orgName = value?["orgName"] as! String
+                            let emailAddress = value?["emailAddress"] as! String
+                            let location = value?["location"] as! String
+                            let category = value?["category"] as! String
+                            let userViewCount = value?["userViewCount"] as! Int
+                            let userEventsAttended = value?["userEventsAttended"] as! Int
+                            self.currentOrg = Org(orgKey: orgKey, orgName: orgName, emailAddress: emailAddress, location: location, category: category, userViewCount: userViewCount, userEventsAttended: userEventsAttended)
+                            
+                            print("retrieved org! org email: \(self.currentOrg?.emailAddress)")
+                            self.performSegue(withIdentifier: "OrgLoginSegue", sender: nil)
+                        }
+                        
+                                            }) { (error) in
                         print(error.localizedDescription)
                     }
                 }
@@ -108,6 +130,23 @@ class InitialViewController: UIViewController {
             let eventListViewController = navBarController.topViewController as! EventListViewController
             print("our current user val is: \(self.currentUser!)")
             eventListViewController.currentUser = self.currentUser
+            
+            let settingsViewController = tabBarController.viewControllers?[2] as! SettingsViewController
+            settingsViewController.currentUser = self.currentUser
+            
+        }
+        
+        if segue.identifier == "OrgLoginSegue" {
+            
+            // make sure that the proper user data is passed in:
+            let tabBarController = segue.destination as! UITabBarController
+            let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
+            let orgEventListViewController = navBarController.topViewController as! OrgEventListViewController
+            print("our current user val is: \(self.currentOrg!)")
+            orgEventListViewController.currentOrg = self.currentOrg
+            
+            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
+            orgSettingsViewController.currentOrg = self.currentOrg
         }
     }
 }

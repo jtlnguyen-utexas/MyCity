@@ -61,9 +61,9 @@ class CreateAccountViewController: UIViewController {
         
         if segue.identifier == "OrgCreateSegue" {
             //TODO LATER
-//            let orgCreateViewController = segue.destination as! OrgCreateViewController
-//            userCreateViewController.userEmail = emailField.text
-//            userCreateViewController.userPassword = passwordField.text
+            let orgCreateViewController = segue.destination as! OrgCreateViewController
+            orgCreateViewController.orgEmail = emailField.text
+            orgCreateViewController.orgPassword = passwordField.text
         }
     }
 }

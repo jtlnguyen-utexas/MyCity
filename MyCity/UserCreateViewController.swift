@@ -42,17 +42,6 @@ class UserCreateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func createNewUser(email: String, password: String) {
         if email != "" && password != "" {
             FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
@@ -91,9 +80,8 @@ class UserCreateViewController: UIViewController {
         // upon successful registration, send user obj to event list
         if segue.identifier == "UserSuccessRegistrationSegue" {
             let tabBarController = segue.destination as! UITabBarController
-            let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
-            let eventListViewController = navBarController.topViewController as! EventListViewController
-            eventListViewController.currentUser = self.currentUser
+            let settingsViewController = tabBarController.viewControllers?[2] as! SettingsViewController
+            settingsViewController.currentUser = self.currentUser
         }
     }
 }
