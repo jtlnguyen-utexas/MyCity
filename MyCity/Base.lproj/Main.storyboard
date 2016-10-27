@@ -355,7 +355,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="jHg-Lo-t96"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" selectedImage="gear" id="jHg-Lo-t96"/>
                     <navigationItem key="navigationItem" id="akU-gj-lMd"/>
                     <connections>
                         <outlet property="eventCountLabel" destination="GWI-6F-XO2" id="si6-Ee-Veq"/>
@@ -1319,11 +1319,11 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
             </objects>
             <point key="canvasLocation" x="937" y="1045"/>
         </scene>
-        <!--Events-->
+        <!--Event List-->
         <scene sceneID="iVe-Le-wME">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Udh-Au-IUF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" id="IsK-Co-R5F"/>
+                    <tabBarItem key="tabBarItem" title="Event List" image="list-fat-7" selectedImage="list-fat-7" id="IsK-Co-R5F"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eyb-T7-cGk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1383,7 +1383,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XbS-l8-1Z1"/>
-        <segue reference="VUj-m8-WiV"/>
+        <segue reference="fSb-Ij-82y"/>
         <segue reference="X0n-KV-KYE"/>
     </inferredMetricsTieBreakers>
 </document>
