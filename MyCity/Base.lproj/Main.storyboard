@@ -377,7 +377,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
         <scene sceneID="gb9-9h-ifb">
             <objects>
                 <navigationController id="XtP-6S-kLn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Event List" id="loB-Pz-3Ri"/>
+                    <tabBarItem key="tabBarItem" title="Event List" image="list-fat-7" selectedImage="list-fat-7" id="loB-Pz-3Ri"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jF1-ni-D0N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -640,7 +640,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="BIz-d0-qE4"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" selectedImage="gear" id="BIz-d0-qE4"/>
                     <navigationItem key="navigationItem" title="Settings" id="T4x-UT-O6c">
                         <barButtonItem key="backBarButtonItem" title="Back" id="WJ8-MF-mNX"/>
                     </navigationItem>
@@ -1209,7 +1209,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
         <scene sceneID="RGD-l8-0YV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fTb-8s-DhC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Event Map" id="02q-6t-woi"/>
+                    <tabBarItem key="tabBarItem" title="Event Map" image="paper-map-7" selectedImage="paper-map-7" id="02q-6t-woi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mLh-V2-YVz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1281,9 +1281,14 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
             <point key="canvasLocation" x="3848.8000000000002" y="-2740.4797601199402"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear" width="30" height="30"/>
+        <image name="list-fat-7" width="30" height="30"/>
+        <image name="paper-map-7" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Knj-P8-8eh"/>
-        <segue reference="fSb-Ij-82y"/>
+        <segue reference="VUj-m8-WiV"/>
         <segue reference="jY6-VZ-Rs2"/>
     </inferredMetricsTieBreakers>
 </document>
