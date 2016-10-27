@@ -23,6 +23,7 @@
 		1FEB5D991DC0894D00F307A9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D981DC0894D00F307A9 /* SettingsViewController.swift */; };
 		2800B8D11DB3F5D300C17AD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2800B8D01DB3F5D300C17AD8 /* GoogleService-Info.plist */; };
 		280980081DB5D48200234049 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280980071DB5D48200234049 /* InitialViewController.swift */; };
+		28BB21C51DC278B900F173A5 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BB21C41DC278B900F173A5 /* PasswordRecoveryViewController.swift */; };
 		28FAB0211DB42BD300DE151B /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB0201DB42BD300DE151B /* CreateAccountViewController.swift */; };
 		28FAB9E21DB44D0E009AA971 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB9E11DB44D0E009AA971 /* User.swift */; };
 		28FAB9E41DB44D41009AA971 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB9E31DB44D41009AA971 /* Event.swift */; };
@@ -49,6 +50,7 @@
 		248935959105C84F45BBC477 /* Pods-MyCity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCity.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCity/Pods-MyCity.release.xcconfig"; sourceTree = "<group>"; };
 		2800B8D01DB3F5D300C17AD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		280980071DB5D48200234049 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		28BB21C41DC278B900F173A5 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		28FAB0201DB42BD300DE151B /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		28FAB9E11DB44D0E009AA971 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		28FAB9E31DB44D41009AA971 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		1FEB5D9B1DC089C300F307A9 /* Login/Register */ = {
 			isa = PBXGroup;
 			children = (
+				28BB21C41DC278B900F173A5 /* PasswordRecoveryViewController.swift */,
 				280980071DB5D48200234049 /* InitialViewController.swift */,
 				28FAB0201DB42BD300DE151B /* CreateAccountViewController.swift */,
 				153D1BA31DC06536007BD2CD /* OrgCreateViewController.swift */,
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28BB21C51DC278B900F173A5 /* PasswordRecoveryViewController.swift in Sources */,
 				28FAB9E41DB44D41009AA971 /* Event.swift in Sources */,
 				1FEB5D951DC0890000F307A9 /* EventsTableViewController.swift in Sources */,
 				28FAB0211DB42BD300DE151B /* CreateAccountViewController.swift in Sources */,
