@@ -87,6 +87,17 @@ class OrgCreateViewController: UIViewController {
                     let newString = (email as NSString).replacingOccurrences(of: ".", with: "@")
                     let userRef = FIRDatabase.database().reference(withPath: newString)
                     userRef.setValue(newOrg.toAnyObject())
+                    
+                    // make a separate one for preferences (for faster loading)
+                    let prefRef = FIRDatabase.database().reference(withPath: "\(newString)pref")
+                    prefRef.setValue([
+                        "orgName": self.orgNameField.text!,
+                        "location": self.orgAddressField.text!,
+                        "category": self.category,
+                        "userViewCount": 0,
+                        "userEventsAttended": 0
+                        ])
+                    
                     self.performSegue(withIdentifier: "OrgSuccessRegistrationSegue", sender: nil)
                 }
                 else {

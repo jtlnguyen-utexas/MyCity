@@ -54,6 +54,19 @@ class UserCreateViewController: UIViewController {
                     let newString = (email as NSString).replacingOccurrences(of: ".", with: "@")
                     let userRef = FIRDatabase.database().reference(withPath: newString)
                     userRef.setValue(newUser.toAnyObject())
+                    
+                    // make a separate one for preferences (for faster loading)
+                    let prefRef = FIRDatabase.database().reference(withPath: "\(newString)pref")
+                    prefRef.setValue([
+                        "nightlife": self.nightlifeSwitch.isOn,
+                        "sports": self.sportsSwitch.isOn,
+                        "food": self.foodSwitch.isOn,
+                        "free": self.freeSwitch.isOn,
+                        "radius": 0.0,
+                        "checkInRatio": "",
+                        "numEventsAttended": 0
+                        ])
+                    
                     self.performSegue(withIdentifier: "UserSuccessRegistrationSegue", sender: nil)
                 }
                 else {

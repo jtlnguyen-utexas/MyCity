@@ -16,7 +16,6 @@ class OrgEventListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("we get here with org being: \(currentOrg!.orgName)")
     }
 
     override func didReceiveMemoryWarning() {

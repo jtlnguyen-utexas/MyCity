@@ -27,75 +27,49 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
-            // here, we have to retrieve the user object
-            let ref = FIRDatabase.database().reference()
-        
-            // have to parse email
-            let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
-        
-            // get a firebase snapchat
-            ref.child(newString).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            // Get user values
-            let value = snapshot.value as? NSDictionary
-            
-            let isUser = value?["isUser"] as! Bool
-            
-            if isUser == true {
-                // means we are dealing with a USER object
-                let userKey = value?["userKey"] as! String
-                let firstName = value?["firstName"] as! String
-                let lastName = value?["lastName"] as! String
-                let emailAddress = value?["emailAddress"] as! String
-                let location = value?["location"] as! String
-                let nightlife = value?["nightlife"] as! Bool
-                let sports = value?["sports"] as! Bool
-                let food = value?["food"] as! Bool
-                let free = value?["free"] as! Bool
-                let radius = value?["radius"] as! Float
-                let checkInRatio = value?["checkInRatio"] as! String
-                let numEventsAttended = value?["numEventsAttended"] as! Int
-                print("we get in here")
-                self.currentUser = User(userKey: userKey, firstName: firstName, lastName: lastName, emailAddress: emailAddress, location: location, nightlife: nightlife, sports: sports, food: food, free: free, radius: radius, checkInRatio: checkInRatio, numEventsAttended: numEventsAttended)
-                print("user in VWL: \((self.currentUser?.nightlife)!)")
-            } })
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        print("user in VWA: \((currentUser?.nightlife)!)")
-        nightlifeSwitch.setOn((currentUser?.nightlife)!, animated: false)
-        sportsSwitch.setOn((currentUser?.sports)!, animated: false)
-        foodSwitch.setOn((currentUser?.food)!, animated: false)
-        freeSwitch.setOn((currentUser?.free)!, animated: false)
         
-        checkInLabel.text = currentUser?.checkInRatio
-        eventsAttendedLabel.text = "\(currentUser?.numEventsAttended)"
+        // here, we have to retrieve the user object
+        let ref = FIRDatabase.database().reference()
+        
+        // have to parse email
+        let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
+        
+        // get a firebase snapchat
+        ref.child("\(newString)pref").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get user values
+            let value = snapshot.value as? NSDictionary
+    
+            self.nightlifeSwitch.setOn((value?["nightlife"] as! Bool), animated: false)
+            self.sportsSwitch.setOn((value?["sports"] as! Bool), animated: false)
+            self.foodSwitch.setOn((value?["food"] as! Bool), animated: false)
+            self.freeSwitch.setOn((value?["free"] as! Bool), animated: false)
+            
+            self.checkInLabel.text = "\(value?["checkInRatio"] as! String)"
+            self.eventsAttendedLabel.text = "\(value?["numEventsAttended"] as! Int)"
+        })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        
         // we will save the data here
-        print("emailAddress: \(currentUser?.emailAddress)")
-        let userRef = FIRDatabase.database().reference()
-        print("get here")
-        let user: [String:String] = ["isUser": "\((currentUser?.isUser)!)",
-                    "userKey": "\((currentUser?.userKey)!)",
-                    "firstName": "\((currentUser?.firstName)!)",
-                    "lastName": "\((currentUser?.lastName)!)",
-                    "emailAddress": "\((currentUser?.emailAddress)!)",
-                    "location": "\((currentUser?.emailAddress)!)",
-                    "nightlife": "\(nightlifeSwitch.isOn)",
-                    "sports": "\(sportsSwitch.isOn)",
-                    "food": "\(foodSwitch.isOn)",
-                    "free": "\(freeSwitch.isOn)",
-                    "radius": "\((currentUser?.radius)!)",
-                    "checkInRatio": "\((currentUser?.checkInRatio)!)",
-                    "numEventsAttended": String((describing: (currentUser?.numEventsAttended)!))
-                    ]
+        let prefsRef = FIRDatabase.database().reference()
+        let toBePosted : Dictionary<String, Any> = [
+            "nightlife": self.nightlifeSwitch.isOn,
+            "sports": self.sportsSwitch.isOn,
+            "food": self.foodSwitch.isOn,
+            "free": self.freeSwitch.isOn,
+            "radius": 0.0,
+            "checkInRatio": String(describing: checkInLabel.text!),
+            "numEventsAttended": 0
+        ]
         let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
-        let childUpdates = ["\(newString)": user]
-        userRef.updateChildValues(childUpdates)
+        let childUpdates = ["\(newString)pref": toBePosted]
+        
+        prefsRef.updateChildValues(childUpdates)
     }
 
     override func didReceiveMemoryWarning() {
