@@ -106,7 +106,7 @@ class OrgSettingsViewController: UIViewController {
                 self.category = "Free!"
             }
             else {
-                category = ""
+                self.category = ""
             }
             
             self.orgNameField.text = "\(value?["orgName"] as! String)"
