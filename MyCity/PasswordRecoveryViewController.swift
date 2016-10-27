@@ -17,7 +17,7 @@ class PasswordRecoveryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        recoveryMessage.text = ""
         // Do any additional setup after loading the view.
     }
 
@@ -32,7 +32,7 @@ class PasswordRecoveryViewController: UIViewController {
         FIRAuth.auth()?.sendPasswordReset(withEmail: email) { error in
             if error != nil {
                 // An error happened.
-                self.recoveryMessage.text = "Error!"
+                self.recoveryMessage.text = "Please Enter a Valid Email Address!"
             } else {
                 // Password reset email sent.
                 self.recoveryMessage.text = "Password Reovery Email Sent!"

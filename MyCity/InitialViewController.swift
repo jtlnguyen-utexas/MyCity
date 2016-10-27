@@ -11,6 +11,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
+
 class InitialViewController: UIViewController {
     
     var currentUser: User?

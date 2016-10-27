@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pjs-uZ-7Vo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pjs-uZ-7Vo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -105,7 +105,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tWF-ZY-YqP" id="6es-2v-PN5">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -378,7 +378,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
             <objects>
                 <navigationController id="XtP-6S-kLn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Event List" image="list-fat-7" selectedImage="list-fat-7" id="loB-Pz-3Ri"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jF1-ni-D0N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jF1-ni-D0N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -403,18 +403,18 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iv1-UF-9b1" id="T68-mS-mTz">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BzW-tH-6Yd">
-                                            <frame key="frameInset" minX="15" minY="12" width="31.5" height="19.5"/>
+                                            <frame key="frameInset" minX="15" minY="12" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bk8-pa-UE6">
-                                            <frame key="frameInset" minX="318.5" minY="12" width="41.5" height="19.5"/>
+                                            <frame key="frameInset" minX="318" minY="12" width="42" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1111,7 +1111,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt; recovery message&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbC-W1-DIY">
-                                <frame key="frameInset" minX="60" minY="177" width="255" height="21"/>
+                                <frame key="frameInset" minX="23" minY="188" width="329" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1344,7 +1344,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FLw-jG-Z9z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="New" id="SSf-yT-8RX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8I9-u2-omi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8I9-u2-omi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1362,7 +1362,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IJN-tl-MiL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IUL-0j-yWy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IUL-0j-yWy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1382,8 +1382,8 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
         <image name="paper-map-7" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XbS-l8-1Z1"/>
-        <segue reference="fSb-Ij-82y"/>
         <segue reference="X0n-KV-KYE"/>
+        <segue reference="xeo-Fh-ReP"/>
+        <segue reference="XbS-l8-1Z1"/>
     </inferredMetricsTieBreakers>
 </document>
