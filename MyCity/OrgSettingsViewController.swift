@@ -137,6 +137,7 @@ class OrgSettingsViewController: UIViewController {
     }
 
     @IBAction func logoutButtonPressed(_ sender: AnyObject) {
+        viewWillDisappear(true)
         try! FIRAuth.auth()!.signOut()
         performSegue(withIdentifier: "BackLoginSegue", sender: nil)
     }

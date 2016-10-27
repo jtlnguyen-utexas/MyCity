@@ -20,6 +20,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet var foodSwitch: UISwitch!
     @IBOutlet var freeSwitch: UISwitch!
     
+    @IBOutlet var radiusSlider: UISlider!
+    @IBOutlet var radiusLabel: UILabel!
+    
     @IBOutlet var checkInLabel: UILabel!
     @IBOutlet var eventsAttendedLabel: UILabel!
     
@@ -47,6 +50,8 @@ class SettingsViewController: UIViewController {
             self.sportsSwitch.setOn((value?["sports"] as! Bool), animated: false)
             self.foodSwitch.setOn((value?["food"] as! Bool), animated: false)
             self.freeSwitch.setOn((value?["free"] as! Bool), animated: false)
+            self.radiusSlider.value = value?["radius"] as! Float
+            self.radiusLabel.text = "\(value?["radius"] as! Float)"
             
             self.checkInLabel.text = "\(value?["checkInRatio"] as! String)"
             self.eventsAttendedLabel.text = "\(value?["numEventsAttended"] as! Int)"
@@ -62,7 +67,7 @@ class SettingsViewController: UIViewController {
             "sports": self.sportsSwitch.isOn,
             "food": self.foodSwitch.isOn,
             "free": self.freeSwitch.isOn,
-            "radius": 0.0,
+            "radius": round(radiusSlider.value),
             "checkInRatio": String(describing: checkInLabel.text!),
             "numEventsAttended": 0
         ]
@@ -77,7 +82,27 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func sliderAction(_ sender: AnyObject) {
+        radiusLabel.text = String(round(radiusSlider.value))
+    }
+    
     @IBAction func logoutButton(_ sender: AnyObject) {
+        let prefsRef = FIRDatabase.database().reference()
+        let toBePosted : Dictionary<String, Any> = [
+            "nightlife": self.nightlifeSwitch.isOn,
+            "sports": self.sportsSwitch.isOn,
+            "food": self.foodSwitch.isOn,
+            "free": self.freeSwitch.isOn,
+            "radius": round(radiusSlider.value),
+            "checkInRatio": String(describing: checkInLabel.text!),
+            "numEventsAttended": 0
+        ]
+        let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
+        let childUpdates = ["\(newString)pref": toBePosted]
+        
+        prefsRef.updateChildValues(childUpdates)
+        
+        
         try! FIRAuth.auth()!.signOut()
         performSegue(withIdentifier: "BackLoginSegue", sender: nil)
     }

@@ -62,7 +62,7 @@ class UserCreateViewController: UIViewController {
                         "sports": self.sportsSwitch.isOn,
                         "food": self.foodSwitch.isOn,
                         "free": self.freeSwitch.isOn,
-                        "radius": 0.0,
+                        "radius": 25.0,
                         "checkInRatio": "",
                         "numEventsAttended": 0
                         ])
