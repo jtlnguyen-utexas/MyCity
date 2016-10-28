@@ -13,16 +13,22 @@ import FirebaseAuth
 
 class SettingsViewController: UIViewController {
     
+    // MARK: Properties
+    
+    // User object to hold data from Firebase
     var currentUser: User?
     
+    // Switches
     @IBOutlet var nightlifeSwitch: UISwitch!
     @IBOutlet var sportsSwitch: UISwitch!
     @IBOutlet var foodSwitch: UISwitch!
     @IBOutlet var freeSwitch: UISwitch!
     
+    // Sliders
     @IBOutlet var radiusSlider: UISlider!
-    @IBOutlet var radiusLabel: UILabel!
     
+    // Labels
+    @IBOutlet var radiusLabel: UILabel!
     @IBOutlet var checkInLabel: UILabel!
     @IBOutlet var eventsAttendedLabel: UILabel!
     
@@ -31,12 +37,17 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         
         // here, we have to retrieve the user object
         let ref = FIRDatabase.database().reference()
-        
+
         // have to parse email
         let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
         
@@ -76,11 +87,8 @@ class SettingsViewController: UIViewController {
         
         prefsRef.updateChildValues(childUpdates)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    //MARK: Actions
     
     @IBAction func sliderAction(_ sender: AnyObject) {
         radiusLabel.text = String(round(radiusSlider.value))
@@ -102,8 +110,8 @@ class SettingsViewController: UIViewController {
         
         prefsRef.updateChildValues(childUpdates)
         
-        
         try! FIRAuth.auth()!.signOut()
+        
         performSegue(withIdentifier: "BackLoginSegue", sender: nil)
     }
     

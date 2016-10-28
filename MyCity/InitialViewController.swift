@@ -12,25 +12,49 @@ import Firebase
 import FirebaseAuth
 
 
-class InitialViewController: UIViewController {
+class InitialViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: Properties
+    
+    // User and Org objects to store after retrieval
     var currentUser: User?
     var currentOrg: Org?
     
+    // Text Fields
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
     
+    // Labels
     @IBOutlet var alertLabel: UILabel!
     
-    @IBAction func loginButtonPressed(_ sender: AnyObject) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        alertLabel.text = ""
         
-        // here, we check whether the fields are filled
-        if emailField.text == "" && passwordField.text == "" {
-            alertLabel.text = "Please fill out both fields!"
-        }
-        else { // then check the validity of login
-            signInUser(email: emailField.text!, password: passwordField.text!)
-        }
+        emailField.delegate = self
+        passwordField.delegate = self
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Used to dismiss the keyboard upon tapping outside of the keyboard region
+    func dismissKeyboard(){
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+    }
+    
+    // Used to dismiss the keyboard upon the return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        return true
     }
     
     func signInUser(email:String, password:String) {
@@ -90,7 +114,7 @@ class InitialViewController: UIViewController {
                             self.performSegue(withIdentifier: "OrgLoginSegue", sender: nil)
                         }
                         
-                                            }) { (error) in
+                    }) { (error) in
                         print(error.localizedDescription)
                     }
                 }
@@ -103,17 +127,18 @@ class InitialViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        alertLabel.text = ""
+    // MARK: Actions
+    
+    @IBAction func loginButtonPressed(_ sender: AnyObject) {
+        // here, we check whether the fields are filled
+        if emailField.text == "" && passwordField.text == "" {
+            alertLabel.text = "Please fill out both fields!"
+        }
+        else { // then check the validity of login
+            signInUser(email: emailField.text!, password: passwordField.text!)
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Navigation
 
@@ -132,7 +157,8 @@ class InitialViewController: UIViewController {
             print("our current user val is: \(self.currentUser!)")
             eventListViewController.currentUser = self.currentUser
             
-            let settingsViewController = tabBarController.viewControllers?[2] as! SettingsViewController
+            let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
+            let settingsViewController = navSettingsViewController.topViewController as! SettingsViewController
             settingsViewController.currentUser = self.currentUser
             
         }
@@ -146,8 +172,12 @@ class InitialViewController: UIViewController {
             print("our current user val is: \(self.currentOrg!)")
             orgEventListViewController.currentOrg = self.currentOrg
             
-            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
+            let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
+            let orgSettingsViewController = navSettingsViewController.topViewController as! OrgSettingsViewController
             orgSettingsViewController.currentOrg = self.currentOrg
+            
+//            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
+//            orgSettingsViewController.currentOrg = self.currentOrg
         }
     }
 }

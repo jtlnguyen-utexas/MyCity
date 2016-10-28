@@ -11,61 +11,56 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-class OrgSettingsViewController: UIViewController {
+class OrgSettingsViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: Properties
+    
+    // Organization's data
     var currentOrg: Org?
     var category: String?
 
+    // Text Fields
     @IBOutlet var orgNameField: UITextField!
     @IBOutlet var orgAddressField: UITextField!
     
+    // Switches
     @IBOutlet var nightlifeSwitch: UISwitch!
     @IBOutlet var sportsSwitch: UISwitch!
     @IBOutlet var foodSwitch: UISwitch!
     @IBOutlet var freeSwitch: UISwitch!
     
+    // Labels
     @IBOutlet var viewCountLabel: UILabel!
     @IBOutlet var eventCountLabel: UILabel!
     
-
-    @IBAction func nightlifeSwitchPressed(_ sender: AnyObject) {
-        foodSwitch.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Nightlife"
-    }
-    
-    @IBAction func sportsSwitchPressed(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        foodSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Sports"
-    }
-    
-    @IBAction func foodSwitchPressed(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Food"
-    }
-    
-    @IBAction func freeSwitchPressed(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        foodSwitch.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        category = "Free!"
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        orgNameField.delegate = self
+        orgAddressField.delegate = self
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Used to dismiss the keyboard upon tapping outside of the keyboard region
+    func dismissKeyboard(){
+        orgNameField.resignFirstResponder()
+        orgAddressField.resignFirstResponder()
+    }
+    
+    // Used to dismiss the keyboard upon the return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        orgNameField.resignFirstResponder()
+        orgAddressField.resignFirstResponder()
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,6 +129,36 @@ class OrgSettingsViewController: UIViewController {
         let childUpdates = ["\(newString)pref": toBePosted]
         
         prefsRef.updateChildValues(childUpdates)
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func nightlifeSwitchPressed(_ sender: AnyObject) {
+        foodSwitch.setOn(false, animated: true)
+        sportsSwitch.setOn(false, animated: true)
+        freeSwitch.setOn(false, animated: true)
+        category = "Nightlife"
+    }
+    
+    @IBAction func sportsSwitchPressed(_ sender: AnyObject) {
+        nightlifeSwitch.setOn(false, animated: true)
+        foodSwitch.setOn(false, animated: true)
+        freeSwitch.setOn(false, animated: true)
+        category = "Sports"
+    }
+    
+    @IBAction func foodSwitchPressed(_ sender: AnyObject) {
+        nightlifeSwitch.setOn(false, animated: true)
+        sportsSwitch.setOn(false, animated: true)
+        freeSwitch.setOn(false, animated: true)
+        category = "Food"
+    }
+    
+    @IBAction func freeSwitchPressed(_ sender: AnyObject) {
+        nightlifeSwitch.setOn(false, animated: true)
+        foodSwitch.setOn(false, animated: true)
+        sportsSwitch.setOn(false, animated: true)
+        category = "Free!"
     }
 
     @IBAction func logoutButtonPressed(_ sender: AnyObject) {

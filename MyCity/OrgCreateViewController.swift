@@ -11,36 +11,63 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-class OrgCreateViewController: UIViewController {
+class OrgCreateViewController: UIViewController, UITextFieldDelegate {
     
-    // org object
+    // MARK: Properties
+    
+    // Objects to store to Firebase
     var currentOrg: Org?
-    
     var orgEmail: String?
     var orgPassword: String?
-    
     var category: String = ""
     
+    // Fields
     @IBOutlet var orgNameField: UITextField!
     @IBOutlet var orgAddressField: UITextField!
     
+    // Switches
     @IBOutlet var nightlifeSwitch: UISwitch!
     @IBOutlet var switchFood: UISwitch!
     @IBOutlet var sportsSwitch: UISwitch!
     @IBOutlet var freeSwitch: UISwitch!
     
+    // Label
     @IBOutlet var alertMessageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        orgNameField.delegate = self
+        orgAddressField.delegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+        
         alertMessageLabel.text = ""
         nightlifeSwitch.setOn(false, animated: true)
         switchFood.setOn(false, animated: true)
         sportsSwitch.setOn(false, animated: true)
         freeSwitch.setOn(false, animated: true)
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Used to dismiss the keyboard upon tapping outside of the keyboard region
+    func dismissKeyboard(){
+        orgNameField.resignFirstResponder()
+        orgAddressField.resignFirstResponder()
+    }
+    
+    // Used to dismiss the keyboard upon the return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        orgNameField.resignFirstResponder()
+        orgAddressField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: Actions
 
     @IBAction func nightlifeSwitchChanged(_ sender: AnyObject) {
         switchFood.setOn(false, animated: true)
@@ -70,9 +97,8 @@ class OrgCreateViewController: UIViewController {
         category = "Free!"
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func nextBtnClicked(_ sender: AnyObject) {
+        createNewOrg(email: orgEmail!, password: orgPassword!)
     }
     
     func createNewOrg(email: String, password: String) {
@@ -108,13 +134,6 @@ class OrgCreateViewController: UIViewController {
             }
         }
     }
-
-
-    // MARK: Action
-    
-    @IBAction func nextBtnClicked(_ sender: AnyObject) {
-        createNewOrg(email: orgEmail!, password: orgPassword!)
-    }
     
     // MARK: - Navigation
     
@@ -126,8 +145,11 @@ class OrgCreateViewController: UIViewController {
         // upon successful registration, send user obj to event list
         if segue.identifier == "OrgSuccessRegistrationSegue" {
             let tabBarController = segue.destination as! UITabBarController
-            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
+            let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
+            let orgSettingsViewController = navSettingsViewController.topViewController as! OrgSettingsViewController
             orgSettingsViewController.currentOrg = self.currentOrg
+//            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
+//            orgSettingsViewController.currentOrg = self.currentOrg
         }
     }
 }

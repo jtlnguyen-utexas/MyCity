@@ -11,23 +11,26 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-class UserCreateViewController: UIViewController {
-        
-    // put email/password info
+class UserCreateViewController: UIViewController, UITextFieldDelegate {
+    
+    // MARK: Properties
+    
+    // Objects used to store User into Firebase
     var userEmail: String?
     var userPassword: String?
-    
-    // user object we will pass down
     var currentUser: User?
     
+    // Fields
     @IBOutlet var firstNameField: UITextField!
     @IBOutlet var lastNameField: UITextField!
     
+    // Switches
     @IBOutlet var nightlifeSwitch: UISwitch!
     @IBOutlet var foodSwitch: UISwitch!
     @IBOutlet var sportsSwitch: UISwitch!
     @IBOutlet var freeSwitch: UISwitch!
     
+    // Labels
     @IBOutlet var alertLabel: UILabel!
     
     override func viewDidLoad() {
@@ -35,12 +38,30 @@ class UserCreateViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         alertLabel.text = ""
+        
+        firstNameField.delegate = self
+        lastNameField.delegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+ 
+    // Used to dismiss the keyboard upon tapping outside of the keyboard region
+    func dismissKeyboard(){
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+    }
+    
+    // Used to dismiss the keyboard upon the return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        return true
+    }
+
     
     func createNewUser(email: String, password: String) {
         if email != "" && password != "" {
@@ -78,6 +99,8 @@ class UserCreateViewController: UIViewController {
         }
     }
     
+    // MARK: Actions
+    
     @IBAction func nextBtnClicked(_ sender: AnyObject) {
         // HERE is where we actually make the account with the given info
         createNewUser(email: userEmail!, password: userPassword!)
@@ -93,7 +116,8 @@ class UserCreateViewController: UIViewController {
         // upon successful registration, send user obj to event list
         if segue.identifier == "UserSuccessRegistrationSegue" {
             let tabBarController = segue.destination as! UITabBarController
-            let settingsViewController = tabBarController.viewControllers?[2] as! SettingsViewController
+            let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
+            let settingsViewController = navSettingsViewController.topViewController as! SettingsViewController
             settingsViewController.currentUser = self.currentUser
         }
     }

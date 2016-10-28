@@ -10,21 +10,39 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class PasswordRecoveryViewController: UIViewController {
+class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
+    
+    // MARK: Properties
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var recoveryMessage: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        recoveryMessage.text = ""
+        
         // Do any additional setup after loading the view.
+        emailTextField.delegate = self
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
+        
+        recoveryMessage.text = ""
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func dismissKeyboard() {
+        emailTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: Actions
     
     @IBAction func sendRecoveryEmailBtn(_ sender: AnyObject) {
         let email = emailTextField.text!
@@ -38,7 +56,6 @@ class PasswordRecoveryViewController: UIViewController {
                 self.recoveryMessage.text = "Password Reovery Email Sent!"
             }
         }
-        
     }
     
     /*
