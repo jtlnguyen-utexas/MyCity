@@ -172,6 +172,10 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             print("our current user val is: \(self.currentOrg!)")
             orgEventListViewController.currentOrg = self.currentOrg
             
+            let addNavBarController = tabBarController.viewControllers?[1] as! UINavigationController
+            let addEventViewController = addNavBarController.topViewController as! AddEventViewController
+            addEventViewController.currentOrg = self.currentOrg
+            
             let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
             let orgSettingsViewController = navSettingsViewController.topViewController as! OrgSettingsViewController
             orgSettingsViewController.currentOrg = self.currentOrg

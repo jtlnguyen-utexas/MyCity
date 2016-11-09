@@ -15,6 +15,7 @@
 		151BB2C71DC1A46E004518A9 /* OrgEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BB2C61DC1A46E004518A9 /* OrgEventListViewController.swift */; };
 		151BB2C91DC1A4A5004518A9 /* OrgSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BB2C81DC1A4A5004518A9 /* OrgSettingsViewController.swift */; };
 		151BB2CE1DC1A513004518A9 /* Org.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BB2CD1DC1A513004518A9 /* Org.swift */; };
+		151DA94C1DD2A8680029C90B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DA94B1DD2A8680029C90B /* AddEventViewController.swift */; };
 		153D1BA41DC06536007BD2CD /* OrgCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D1BA31DC06536007BD2CD /* OrgCreateViewController.swift */; };
 		15AABBFB1DC05C83005EF59F /* UserCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AABBFA1DC05C83005EF59F /* UserCreateViewController.swift */; };
 		1FEB5D931DC088AE00F307A9 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */; };
@@ -41,6 +42,7 @@
 		151BB2C61DC1A46E004518A9 /* OrgEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventListViewController.swift; sourceTree = "<group>"; };
 		151BB2C81DC1A4A5004518A9 /* OrgSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgSettingsViewController.swift; sourceTree = "<group>"; };
 		151BB2CD1DC1A513004518A9 /* Org.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Org.swift; sourceTree = "<group>"; };
+		151DA94B1DD2A8680029C90B /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		153D1BA31DC06536007BD2CD /* OrgCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgCreateViewController.swift; sourceTree = "<group>"; };
 		15AABBFA1DC05C83005EF59F /* UserCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateViewController.swift; sourceTree = "<group>"; };
 		1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		151BB2CC1DC1A4C1004518A9 /* Org Interface */ = {
 			isa = PBXGroup;
 			children = (
+				151DA94B1DD2A8680029C90B /* AddEventViewController.swift */,
 				151BB2C61DC1A46E004518A9 /* OrgEventListViewController.swift */,
 				151BB2C81DC1A4A5004518A9 /* OrgSettingsViewController.swift */,
 			);
@@ -291,6 +294,7 @@
 			files = (
 				28BB21C51DC278B900F173A5 /* PasswordRecoveryViewController.swift in Sources */,
 				28FAB9E41DB44D41009AA971 /* Event.swift in Sources */,
+				151DA94C1DD2A8680029C90B /* AddEventViewController.swift in Sources */,
 				1FEB5D951DC0890000F307A9 /* EventsTableViewController.swift in Sources */,
 				28FAB0211DB42BD300DE151B /* CreateAccountViewController.swift in Sources */,
 				153D1BA41DC06536007BD2CD /* OrgCreateViewController.swift in Sources */,
