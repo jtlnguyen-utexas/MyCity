@@ -27,6 +27,7 @@
 		2800B8D11DB3F5D300C17AD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2800B8D01DB3F5D300C17AD8 /* GoogleService-Info.plist */; };
 		280980081DB5D48200234049 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280980071DB5D48200234049 /* InitialViewController.swift */; };
 		28BB21C51DC278B900F173A5 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BB21C41DC278B900F173A5 /* PasswordRecoveryViewController.swift */; };
+		28FA7E421DD525300036C412 /* EventMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FA7E411DD525300036C412 /* EventMapViewController.swift */; };
 		28FAB0211DB42BD300DE151B /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB0201DB42BD300DE151B /* CreateAccountViewController.swift */; };
 		28FAB9E21DB44D0E009AA971 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB9E11DB44D0E009AA971 /* User.swift */; };
 		28FAB9E41DB44D41009AA971 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FAB9E31DB44D41009AA971 /* Event.swift */; };
@@ -57,6 +58,7 @@
 		2800B8D01DB3F5D300C17AD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		280980071DB5D48200234049 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		28BB21C41DC278B900F173A5 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
+		28FA7E411DD525300036C412 /* EventMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMapViewController.swift; sourceTree = "<group>"; };
 		28FAB0201DB42BD300DE151B /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		28FAB9E11DB44D0E009AA971 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		28FAB9E31DB44D41009AA971 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		15089F451DAACCC800ED0E80 /* MyCity */ = {
 			isa = PBXGroup;
 			children = (
+				28FA7E411DD525300036C412 /* EventMapViewController.swift */,
 				15089F461DAACCC800ED0E80 /* AppDelegate.swift */,
 				15089F4A1DAACCC800ED0E80 /* Main.storyboard */,
 				151BB2CC1DC1A4C1004518A9 /* Org Interface */,
@@ -300,6 +303,7 @@
 			files = (
 				28BB21C51DC278B900F173A5 /* PasswordRecoveryViewController.swift in Sources */,
 				28FAB9E41DB44D41009AA971 /* Event.swift in Sources */,
+				28FA7E421DD525300036C412 /* EventMapViewController.swift in Sources */,
 				151DA94C1DD2A8680029C90B /* AddEventViewController.swift in Sources */,
 				1FEB5D951DC0890000F307A9 /* EventsTableViewController.swift in Sources */,
 				28FAB0211DB42BD300DE151B /* CreateAccountViewController.swift in Sources */,

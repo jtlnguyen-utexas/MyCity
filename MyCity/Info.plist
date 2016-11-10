@@ -34,5 +34,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow us to access your current location so we can see which events are around you</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow us to access your current location so we can see which events are around you</string>
 </dict>
 </plist>
