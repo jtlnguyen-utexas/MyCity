@@ -18,6 +18,8 @@
 		151DA94C1DD2A8680029C90B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151DA94B1DD2A8680029C90B /* AddEventViewController.swift */; };
 		153D1BA41DC06536007BD2CD /* OrgCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D1BA31DC06536007BD2CD /* OrgCreateViewController.swift */; };
 		15AABBFB1DC05C83005EF59F /* UserCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AABBFA1DC05C83005EF59F /* UserCreateViewController.swift */; };
+		1F97EB601DD2ECBD00EE609C /* OrgEventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97EB5F1DD2ECBD00EE609C /* OrgEventListTableViewController.swift */; };
+		1F97EB621DD2F0B600EE609C /* OrgEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97EB611DD2F0B600EE609C /* OrgEventViewController.swift */; };
 		1FEB5D931DC088AE00F307A9 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */; };
 		1FEB5D951DC0890000F307A9 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D941DC0890000F307A9 /* EventsTableViewController.swift */; };
 		1FEB5D971DC0892000F307A9 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D961DC0892000F307A9 /* EventViewController.swift */; };
@@ -45,6 +47,8 @@
 		151DA94B1DD2A8680029C90B /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		153D1BA31DC06536007BD2CD /* OrgCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgCreateViewController.swift; sourceTree = "<group>"; };
 		15AABBFA1DC05C83005EF59F /* UserCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateViewController.swift; sourceTree = "<group>"; };
+		1F97EB5F1DD2ECBD00EE609C /* OrgEventListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventListTableViewController.swift; sourceTree = "<group>"; };
+		1F97EB611DD2F0B600EE609C /* OrgEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventViewController.swift; sourceTree = "<group>"; };
 		1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		1FEB5D941DC0890000F307A9 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		1FEB5D961DC0892000F307A9 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -111,9 +115,11 @@
 		151BB2CC1DC1A4C1004518A9 /* Org Interface */ = {
 			isa = PBXGroup;
 			children = (
+				1F97EB611DD2F0B600EE609C /* OrgEventViewController.swift */,
 				151DA94B1DD2A8680029C90B /* AddEventViewController.swift */,
 				151BB2C61DC1A46E004518A9 /* OrgEventListViewController.swift */,
 				151BB2C81DC1A4A5004518A9 /* OrgSettingsViewController.swift */,
+				1F97EB5F1DD2ECBD00EE609C /* OrgEventListTableViewController.swift */,
 			);
 			name = "Org Interface";
 			sourceTree = "<group>";
@@ -297,7 +303,9 @@
 				151DA94C1DD2A8680029C90B /* AddEventViewController.swift in Sources */,
 				1FEB5D951DC0890000F307A9 /* EventsTableViewController.swift in Sources */,
 				28FAB0211DB42BD300DE151B /* CreateAccountViewController.swift in Sources */,
+				1F97EB601DD2ECBD00EE609C /* OrgEventListTableViewController.swift in Sources */,
 				153D1BA41DC06536007BD2CD /* OrgCreateViewController.swift in Sources */,
+				1F97EB621DD2F0B600EE609C /* OrgEventViewController.swift in Sources */,
 				151BB2C71DC1A46E004518A9 /* OrgEventListViewController.swift in Sources */,
 				15089F471DAACCC800ED0E80 /* AppDelegate.swift in Sources */,
 				280980081DB5D48200234049 /* InitialViewController.swift in Sources */,

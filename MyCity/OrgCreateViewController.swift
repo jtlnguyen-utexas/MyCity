@@ -144,10 +144,17 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
         
         // upon successful registration, send user obj to event list
         if segue.identifier == "OrgSuccessRegistrationSegue" {
+            
             let tabBarController = segue.destination as! UITabBarController
             let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
             let orgSettingsViewController = navSettingsViewController.topViewController as! OrgSettingsViewController
             orgSettingsViewController.currentOrg = self.currentOrg
+            
+            let addNavBarController = tabBarController.viewControllers?[1] as! UINavigationController
+            let addEventViewController = addNavBarController.topViewController as! AddEventViewController
+            addEventViewController.currentOrg = self.currentOrg
+        
+            
 //            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
 //            orgSettingsViewController.currentOrg = self.currentOrg
         }

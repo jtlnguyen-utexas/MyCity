@@ -15,7 +15,6 @@ class Org: NSObject {
     
     private var orgRef: FIRDatabaseReference?
     
-    
     private var _isUser: Bool = false
     private var _orgKey: String!
     private var _orgName: String!

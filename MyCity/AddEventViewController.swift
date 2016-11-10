@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddEventViewController: UIViewController {
 
@@ -16,13 +17,22 @@ class AddEventViewController: UIViewController {
     
     @IBOutlet var eventNameField: UITextField!
     @IBOutlet var eventAddressField: UITextField!
-    @IBOutlet var eventStartField: UITextField!
-    @IBOutlet var eventEndField: UITextField!
-    @IBOutlet var eventDescritpionField: UITextField!
+    @IBOutlet var monthField: UITextField!
+    @IBOutlet var dayField: UITextField!
+    @IBOutlet var timeField: UITextField!
+    
+    @IBOutlet var amPmSwitch: UISwitch!
+    
     @IBOutlet var eventTagsField: UITextField!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var eventDescriptionField: UITextField!
     
+    @IBOutlet var endMonthField: UITextField!
+    @IBOutlet var endDayField: UITextField!
+    @IBOutlet var endTimeField: UITextField!
+    @IBOutlet var endAmPmSwitch: UISwitch!
     
+    @IBOutlet var eventMsgLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +40,8 @@ class AddEventViewController: UIViewController {
         // Do any additional setup after loading the view.
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageSelector)))
         imageView.isUserInteractionEnabled = true
+        
+        eventMsgLabel.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +62,25 @@ class AddEventViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func eventAddBtn(_ sender: AnyObject) {
+        // make new user and add an empty object to database
+        var amPm: String = "PM"
+        if amPmSwitch.isOn == true {
+            amPm = "AM"
+        }
+        let startDate = "\(monthField.text!) \(dayField.text!) \(timeField.text!) \(amPm)"
+        
+        var endAmPm: String = "PM"
+        if endAmPmSwitch.isOn == true {
+            endAmPm = "AM"
+        }
+        let endDate = "\(endMonthField.text!) \(endDayField.text!) \(endTimeField.text!) \(endAmPm)"
+        
+        let newEvent = Event(eventKey: (currentOrg?.emailAddress)!, eventName: eventNameField.text!, eventStart: startDate, eventEnd: endDate, eventDescription: eventDescriptionField.text!, eventAddress: eventAddressField.text!, eventTags: [eventTagsField.text!], eventCheckIns: 0, eventRSVPs: 0, orgEmail: (currentOrg?.emailAddress)!)
+        
+        newEvent.forwardGeocoding(address: newEvent.eventAddress)
+        print("get here")
+
+        eventMsgLabel.text = "Event added!"
     }
     
     func handleImageSelector() {

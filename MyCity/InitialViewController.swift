@@ -180,6 +180,8 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             let orgSettingsViewController = navSettingsViewController.topViewController as! OrgSettingsViewController
             orgSettingsViewController.currentOrg = self.currentOrg
             
+            
+            
 //            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
 //            orgSettingsViewController.currentOrg = self.currentOrg
         }

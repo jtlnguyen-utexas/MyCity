@@ -1,19 +1,15 @@
 //
-//  OrgEventListViewController.swift
+//  OrgEventViewController.swift
 //  MyCity
 //
-//  Created by Nelia Perez on 10/26/16.
+//  Created by Hamza Muhammad on 11/8/16.
 //  Copyright © 2016 cs378. All rights reserved.
 //
 
 import UIKit
 
-class OrgEventListViewController: UIViewController {
-    
-    var currentOrg: Org?
+class OrgEventViewController: UIViewController {
 
-    @IBOutlet var filterChoice: UISegmentedControl!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,22 +21,15 @@ class OrgEventListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "eventListSegue" {
-            let orgEventListTableViewController = segue.destination  as! OrgEventListTableViewController
-            orgEventListTableViewController.currentOrg = self.currentOrg
-            orgEventListTableViewController.orgEventListViewController = self
-        }
-        
-//        if segue.identifier == "orgFilterSegue" {
-//            let orgEventListTableViewController = segue.destination  as! OrgEventListTableViewController
-//
-//        }
     }
+    */
 
 }
