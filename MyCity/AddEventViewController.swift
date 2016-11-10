@@ -9,28 +9,21 @@
 import UIKit
 import Firebase
 
-class AddEventViewController: UIViewController {
+class AddEventViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: Properties
     
     var currentOrg: Org?
+    var dateField: String?
     
     @IBOutlet var eventNameField: UITextField!
     @IBOutlet var eventAddressField: UITextField!
-    @IBOutlet var monthField: UITextField!
-    @IBOutlet var dayField: UITextField!
-    @IBOutlet var timeField: UITextField!
-    
-    @IBOutlet var amPmSwitch: UISwitch!
+    @IBOutlet var startField: UITextField!
+    @IBOutlet var endField: UITextField!
     
     @IBOutlet var eventTagsField: UITextField!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var eventDescriptionField: UITextField!
-    
-    @IBOutlet var endMonthField: UITextField!
-    @IBOutlet var endDayField: UITextField!
-    @IBOutlet var endTimeField: UITextField!
-    @IBOutlet var endAmPmSwitch: UISwitch!
     
     @IBOutlet var eventMsgLabel: UILabel!
     
@@ -40,6 +33,9 @@ class AddEventViewController: UIViewController {
         // Do any additional setup after loading the view.
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageSelector)))
         imageView.isUserInteractionEnabled = true
+        
+        startField.delegate = self
+        endField.delegate = self
         
         eventMsgLabel.text = ""
     }
@@ -62,21 +58,7 @@ class AddEventViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func eventAddBtn(_ sender: AnyObject) {
-        // make new user and add an empty object to database
-        var amPm: String = "PM"
-        if amPmSwitch.isOn == true {
-            amPm = "AM"
-        }
-        let startDate = "\(monthField.text!) \(dayField.text!) \(timeField.text!) \(amPm)"
-        
-        var endAmPm: String = "PM"
-        if endAmPmSwitch.isOn == true {
-            endAmPm = "AM"
-        }
-        let endDate = "\(endMonthField.text!) \(endDayField.text!) \(endTimeField.text!) \(endAmPm)"
-        
-        let newEvent = Event(eventKey: (currentOrg?.emailAddress)!, eventName: eventNameField.text!, eventStart: startDate, eventEnd: endDate, eventDescription: eventDescriptionField.text!, eventAddress: eventAddressField.text!, eventTags: eventTagsField.text!, eventCheckIns: 0, eventRSVPs: 0, orgEmail: (currentOrg?.emailAddress)!, latitude: "", longitude: "", eventHash: "")
-        
+        let newEvent = Event(eventKey: (currentOrg?.emailAddress)!, eventName: eventNameField.text!, eventStart: startField.text!, eventEnd: endField.text!, eventDescription: eventDescriptionField.text!, eventAddress: eventAddressField.text!, eventTags: eventTagsField.text!, eventCheckIns: 0, eventRSVPs: 0, orgEmail: (currentOrg?.emailAddress)!, latitude: "", longitude: "", eventHash: "")
         newEvent.forwardGeocoding(address: newEvent.eventAddress)
         print("get here")
 
@@ -86,5 +68,35 @@ class AddEventViewController: UIViewController {
     func handleImageSelector() {
         print("Clicked on Image")
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        dateField = textField.text
+        let datePicker = UIDatePicker()
+        textField.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(self.datePickerChanged(sender:)), for: .allEvents)
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.text = dateField
+        return true
+    }
+    
+    func datePickerChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        let dateStr:String = formatter.string(from: sender.date)
+        dateField = dateStr
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
 
 }

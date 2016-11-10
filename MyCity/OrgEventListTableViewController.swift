@@ -65,104 +65,45 @@ class OrgEventListTableViewController: UITableViewController {
                     if email == self.currentOrg?.emailAddress {
                         // here, we have to filter
                         
-                        let date = NSDate()
-                        let unitFlags = Set<Calendar.Component>([.day, .month, .year, .hour])
-                        let components = NSCalendar.current.dateComponents(unitFlags, from: date as Date)
+                        let date = Date()
                         
-                        let month = Int(components.month!)
-                        let day = Int(components.day!)
-                        let hour = Int(components.hour!)
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "MM/dd/yy, hh:mm aa"
                         
                         let startEvent : String = value?["eventStart"] as! String
-                        let startDate : [String] = startEvent.components(separatedBy: " ")
-                        
-                        // And then to access the individual words:
-                        let startEventMonth = Int(startDate[0])!
-                        let startEventDay = Int(startDate[1])!
-                        var startEventHour: Int = Int(startDate[2])!
-                        if startDate[3] == "PM" {
-                            startEventHour += 12
-                        }
-                        
+                        let startDate = formatter.date(from: startEvent)
+
                         let endEvent : String = value?["eventEnd"] as! String
-                        let endDate : [String] = endEvent.components(separatedBy: " ")
-                        
-                        // And then to access the individual words:
-                        let endEventMonth = Int(endDate[0])!
-                        let endEventDay = Int(endDate[1])!
-                        var endEventHour = Int(endDate[2])!
-                        if endDate[3] == "PM" {
-                            endEventHour += 12
-                        }
+                        let endDate = formatter.date(from: endEvent)
                         
                         var getEvent: Bool = false
                         
                         if filter == "Previous" {
-                            if month > endEventMonth {
-                                getEvent = true
-                            }
-                            else if month == endEventMonth && day > endEventDay {
-                                getEvent = true
-                            }
-                            else if month == endEventMonth && day == endEventDay && hour > endEventHour {
+                            if endDate! < date {
                                 getEvent = true
                             }
                         }
+                            
                         else if filter == "Future" {
-                            if month < startEventMonth {
-                                getEvent = true
-                            }
-                            else if month == startEventMonth && day < startEventDay {
-                                getEvent = true
-                            }
-                            else if month == startEventMonth && day == startEventDay && hour < startEventHour {
+                            if startDate! > date {
                                 getEvent = true
                             }
                         }
                         else if filter == "Ongoing" {
-                            
-                            var isPrev: Bool = false
-                            if month > endEventMonth {
-                                isPrev = true
-                            }
-                            else if month == endEventMonth && day > endEventDay {
-                                isPrev = true
-                            }
-                            else if month == endEventMonth && day == endEventDay && hour > endEventHour {
-                                isPrev = true
-                            }
-                            
-                            var isFuture: Bool = false
-                            if month < startEventMonth {
-                                isFuture = true
-                            }
-                            else if month == startEventMonth && day < startEventDay {
-                                isFuture = true
-                            }
-                            else if month == startEventMonth && day == startEventDay && hour < startEventHour {
-                                isFuture = true
-                            }
-                            
-                            if isPrev == false && isFuture == false {
+                            if endDate! >= date && startDate! <= date {
                                 getEvent = true
                             }
-                            else if isPrev == true {
-                                getEvent = false
-                            }
-                            else if isFuture == true {
-                                getEvent = false
-                            }
                         }
-                        
+                    
                         if email == self.currentOrg?.emailAddress && getEvent == true {
                             // add event if its ours
                             let event = Event(eventKey: value?["eventKey"] as! String, eventName: value?["eventName"] as! String, eventStart: value?["eventStart"] as! String, eventEnd: value?["eventEnd"] as! String, eventDescription: value?["eventDescription"] as! String, eventAddress: value?["eventAddress"] as! String, eventTags: value?["eventTags"] as! String, eventCheckIns: value?["eventCheckIns"] as! Int, eventRSVPs: value?["eventRSVPs"] as! Int, orgEmail: email, latitude: value?["latitude"] as! String, longitude: value?["longitude"] as! String, eventHash: value?["eventHash"] as! String)
                             print("i am dude")
                             tempEvents.append(event)
                             self.events.removeAll()
-                            for event in tempEvents {
-                                self.events.append(event)
-                            }
+                          for event in tempEvents {
+                            self.events.append(event)
+                          }
                             print("TEMPevents within call: \(tempEvents.count)")
                         }
                     }
