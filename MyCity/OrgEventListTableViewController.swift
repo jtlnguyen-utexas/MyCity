@@ -28,11 +28,17 @@ class OrgEventListTableViewController: UITableViewController {
         
         // we retrieve all of the org data (their events)
         
+        orgEventListViewController?.filterChoice.addTarget(self, action: #selector(self.segmentedControllerChanged), for: .allEvents)
+        
         print("events length: \(events.count)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OrgEventListTableViewController.updateTable), userInfo: nil, repeats: true)
+    }
+    
+    func segmentedControllerChanged() {
+        events.self.removeAll()
     }
     
     func updateTable() {
