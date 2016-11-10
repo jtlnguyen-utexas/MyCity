@@ -25,12 +25,13 @@ class Event: NSObject {
     private var _eventEnd: String!
     private var _eventDescription: String!
     private var _eventAddress: String!
-    private var _eventTags: [String]!
+    private var _eventTags: String!
     private var _eventCheckIns: Int!
     private var _eventRSVPs: Int!
     private var _latitude: String!
     private var _longitude: String!
     private var _orgEmail: String!
+    private var _eventHash: String!
     
     var eventKey: String {
         return _eventKey
@@ -60,7 +61,7 @@ class Event: NSObject {
         return _eventAddress
     }
     
-    var eventTags: [String] {
+    var eventTags: String {
         return _eventTags
     }
     
@@ -84,7 +85,11 @@ class Event: NSObject {
         return _orgEmail
     }
     
-    init(eventKey: String, eventName: String, eventStart: String, eventEnd: String, eventDescription: String, eventAddress: String, eventTags: [String], eventCheckIns: Int, eventRSVPs: Int, orgEmail: String){
+    var eventHash: String {
+        return _eventHash
+    }
+    
+    init(eventKey: String, eventName: String, eventStart: String, eventEnd: String, eventDescription: String, eventAddress: String, eventTags: String, eventCheckIns: Int, eventRSVPs: Int, orgEmail: String, latitude: String, longitude: String, eventHash: String){
         
         self._eventKey = eventKey
         self._eventName = eventName
@@ -97,6 +102,11 @@ class Event: NSObject {
         self._eventCheckIns = eventCheckIns
         self._eventRSVPs = eventRSVPs
         self._orgEmail = orgEmail
+        if latitude != "" && longitude != "" && eventHash != "" {
+            self._latitude = latitude
+            self._longitude = longitude
+            self._eventHash = eventHash
+        }
     }
     
     func forwardGeocoding(address: String) {
@@ -120,6 +130,8 @@ class Event: NSObject {
                 let hash = ("\(NSDate().timeIntervalSince1970)" as NSString).replacingOccurrences(of: ".", with: "@")
                 let email = (self.orgEmail as NSString).replacingOccurrences(of: ".", with: "@")
                 let newString = "e \(email) \(hash)"
+                
+                self._eventHash = hash
 
                 let orgRef = FIRDatabase.database().reference(withPath: newString)
                 orgRef.setValue(self.toAnyObject())
@@ -142,10 +154,13 @@ class Event: NSObject {
         _eventEnd = snapshotValue["eventEnd"] as! String
         _eventDescription = snapshotValue["eventDescription"] as! String
         _eventAddress = snapshotValue["eventAddress"] as! String
-        _eventTags = snapshotValue["eventTags"] as! [String]
+        _eventTags = snapshotValue["eventTags"] as! String
         _eventCheckIns = snapshotValue["eventCheckIns"] as! Int
         _eventRSVPs = snapshotValue["eventRSVPs"] as! Int
+        _latitude = snapshotValue["latitude"] as! String
+        _longitude = snapshotValue["longitude"] as! String
         _orgEmail = snapshotValue["orgEmail"] as! String
+        _eventHash = snapshotValue["eventHash"] as! String
         eventRef = snapshot.ref
     }
     
@@ -162,7 +177,8 @@ class Event: NSObject {
             "eventRSVPs": _eventRSVPs,
             "latitude": _latitude,
             "longitude": _longitude,
-            "orgEmail": _orgEmail
+            "orgEmail": _orgEmail,
+            "eventHash": _eventHash
         ]
     }
 }

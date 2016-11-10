@@ -153,6 +153,11 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
             let addNavBarController = tabBarController.viewControllers?[1] as! UINavigationController
             let addEventViewController = addNavBarController.topViewController as! AddEventViewController
             addEventViewController.currentOrg = self.currentOrg
+            
+            let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
+            let orgEventListViewController = navBarController.topViewController as! OrgEventListViewController
+            print("our current user val is: \(self.currentOrg!)")
+            orgEventListViewController.currentOrg = self.currentOrg
         
             
 //            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController

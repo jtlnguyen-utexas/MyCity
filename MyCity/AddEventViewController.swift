@@ -75,7 +75,7 @@ class AddEventViewController: UIViewController {
         }
         let endDate = "\(endMonthField.text!) \(endDayField.text!) \(endTimeField.text!) \(endAmPm)"
         
-        let newEvent = Event(eventKey: (currentOrg?.emailAddress)!, eventName: eventNameField.text!, eventStart: startDate, eventEnd: endDate, eventDescription: eventDescriptionField.text!, eventAddress: eventAddressField.text!, eventTags: [eventTagsField.text!], eventCheckIns: 0, eventRSVPs: 0, orgEmail: (currentOrg?.emailAddress)!)
+        let newEvent = Event(eventKey: (currentOrg?.emailAddress)!, eventName: eventNameField.text!, eventStart: startDate, eventEnd: endDate, eventDescription: eventDescriptionField.text!, eventAddress: eventAddressField.text!, eventTags: eventTagsField.text!, eventCheckIns: 0, eventRSVPs: 0, orgEmail: (currentOrg?.emailAddress)!, latitude: "", longitude: "", eventHash: "")
         
         newEvent.forwardGeocoding(address: newEvent.eventAddress)
         print("get here")
