@@ -10,6 +10,8 @@ import UIKit
 
 class EventsTableViewController: UITableViewController {
 
+    var eventListViewController: EventListViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,11 +20,18 @@ class EventsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.touchOutsideSearchBar))
+        self.tableView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func touchOutsideSearchBar() {
+        eventListViewController?.searchBar.endEditing(true)
     }
 
     // MARK: - Table view data source

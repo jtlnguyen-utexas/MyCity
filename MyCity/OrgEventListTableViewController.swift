@@ -16,6 +16,7 @@ class OrgEventListTableViewController: UITableViewController {
     var events = [Event]()
     var timer = Timer()
     var orgEventListViewController: OrgEventListViewController?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,13 @@ class OrgEventListTableViewController: UITableViewController {
         orgEventListViewController?.filterChoice.addTarget(self, action: #selector(self.segmentedControllerChanged), for: .allEvents)
         
         print("events length: \(events.count)")
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedTableView))
+        self.tableView.addGestureRecognizer(tap)
+    }
+    
+    func tappedTableView() {
+        orgEventListViewController?.seachBar.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,6 +162,10 @@ class OrgEventListTableViewController: UITableViewController {
         cell.detailTextLabel?.text = "\(item.eventCheckIns)"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        orgEventListViewController?.seachBar.endEditing(true)
     }
     
     /*
