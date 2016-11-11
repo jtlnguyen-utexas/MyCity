@@ -11,6 +11,7 @@ import Firebase
 
 class OrgEventViewController: UIViewController {
     
+    var currentOrg: Org?
     var currEvent: Event?
     
     @IBOutlet var eventNameField: UITextField!
@@ -30,6 +31,7 @@ class OrgEventViewController: UIViewController {
         eventLocationField.text = currEvent?.eventAddress
         eventDescriptionField.text = currEvent?.eventDescription
         eventTagsField.text = (currEvent?.eventTags)!
+        orgNameLabel.text = currentOrg?.orgName
     }
 
     override func didReceiveMemoryWarning() {

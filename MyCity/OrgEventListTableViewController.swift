@@ -201,6 +201,7 @@ class OrgEventListTableViewController: UITableViewController {
             if let row = tableView.indexPathForSelectedRow?.row {
                 let orgEventViewController = segue.destination as! OrgEventViewController
                 orgEventViewController.currEvent = events[row]
+                orgEventViewController.currentOrg = self.currentOrg
             }
         }
     }

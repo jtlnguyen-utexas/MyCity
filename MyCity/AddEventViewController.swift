@@ -62,7 +62,18 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
         newEvent.forwardGeocoding(address: newEvent.eventAddress)
         print("get here")
 
-        eventMsgLabel.text = "Event added!"
+        //eventMsgLabel.text = "Event added!"
+        
+        eventNameField.text = ""
+        eventAddressField.text = ""
+        startField.text = ""
+        endField.text = ""
+        eventDescriptionField.text = ""
+        eventTagsField.text = ""
+        
+        let alert = UIAlertController(title: "Alert", message: "Event added!", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func handleImageSelector() {
