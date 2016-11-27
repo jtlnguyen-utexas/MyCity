@@ -31,8 +31,6 @@ class OrgEventListTableViewController: UITableViewController {
         
         orgEventListViewController?.filterChoice.addTarget(self, action: #selector(self.segmentedControllerChanged), for: .allEvents)
         
-        print("events length: \(events.count)")
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedTableView))
         self.tableView.addGestureRecognizer(tap)
     }
@@ -51,7 +49,6 @@ class OrgEventListTableViewController: UITableViewController {
     
     func updateTable() {
         // here, we update the
-        print("events before call: \(events.count)")
         var tempEvents = [Event]()
         
         var filter: String!
@@ -67,10 +64,8 @@ class OrgEventListTableViewController: UITableViewController {
         
         let ref = FIRDatabase.database().reference()
         ref.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot.childrenCount) // I got the expected number of items
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? FIRDataSnapshot {
-                print(rest.value)
                 let value = rest.value as? NSDictionary
                 
                 // see if this object has this field (if so, its an event)
@@ -112,21 +107,17 @@ class OrgEventListTableViewController: UITableViewController {
                         if email == self.currentOrg?.emailAddress && getEvent == true {
                             // add event if its ours
                             let event = Event(eventKey: value?["eventKey"] as! String, eventName: value?["eventName"] as! String, eventStart: value?["eventStart"] as! String, eventEnd: value?["eventEnd"] as! String, eventDescription: value?["eventDescription"] as! String, eventAddress: value?["eventAddress"] as! String, eventTags: value?["eventTags"] as! String, eventCheckIns: value?["eventCheckIns"] as! Int, eventRSVPs: value?["eventRSVPs"] as! Int, orgEmail: email, latitude: value?["latitude"] as! String, longitude: value?["longitude"] as! String, eventHash: value?["eventHash"] as! String)
-                            print("i am dude")
                             tempEvents.append(event)
                             self.events.removeAll()
                           for event in tempEvents {
                             self.events.append(event)
                           }
-                            print("TEMPevents within call: \(tempEvents.count)")
                         }
                     }
                 }
             }
         })
-        
-        print("events after call: \(events.count)")
-
+    
         self.tableView.reloadData()
     }
 
@@ -146,17 +137,18 @@ class OrgEventListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return self.events.count
     }
+    
+    func touchOutsideSearchBar() {
+        orgEventListViewController?.seachBar.endEditing(true)
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("wtf is this")
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
 
         // Configure the cell...
         let item = events[indexPath.row]
-        
-        print("we get here with \(item)")
-        
+                
         // Configure the cell with the Item
         cell.textLabel?.text = item.eventName
         cell.detailTextLabel?.text = "\(item.eventCheckIns)"

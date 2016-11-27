@@ -96,7 +96,6 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
                             let numEventsAttended = value?["numEventsAttended"] as! Int
                             self.currentUser = User(userKey: userKey, firstName: firstName, lastName: lastName, emailAddress: emailAddress, location: location, nightlife: nightlife, sports: sports, food: food, free: free, radius: radius, checkInRatio: checkInRatio, numEventsAttended: numEventsAttended)
                             
-                            print("retrieved user! user email: \(self.currentUser?.emailAddress)")
                             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
                         }
                         else {
@@ -110,7 +109,6 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
                             let userEventsAttended = value?["userEventsAttended"] as! Int
                             self.currentOrg = Org(orgKey: orgKey, orgName: orgName, emailAddress: emailAddress, location: location, category: category, userViewCount: userViewCount, userEventsAttended: userEventsAttended)
                             
-                            print("retrieved org! org email: \(self.currentOrg?.emailAddress)")
                             self.performSegue(withIdentifier: "OrgLoginSegue", sender: nil)
                         }
                         
@@ -120,7 +118,6 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
                 }
                 else {
                     print("Login Failed!")
-                    print(error)
                     self.alertLabel.text = "Invalid email/password"
                 }
             }
@@ -139,7 +136,6 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -154,22 +150,19 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             let tabBarController = segue.destination as! UITabBarController
             let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
             let eventListViewController = navBarController.topViewController as! EventListViewController
-            print("our current user val is: \(self.currentUser!)")
             eventListViewController.currentUser = self.currentUser
             
             let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
             let settingsViewController = navSettingsViewController.topViewController as! SettingsViewController
             settingsViewController.currentUser = self.currentUser
-            
         }
-        
+    
         if segue.identifier == "OrgLoginSegue" {
             
             // make sure that the proper user data is passed in:
             let tabBarController = segue.destination as! UITabBarController
             let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
             let orgEventListViewController = navBarController.topViewController as! OrgEventListViewController
-            print("our current user val is: \(self.currentOrg!)")
             orgEventListViewController.currentOrg = self.currentOrg
             
             let addNavBarController = tabBarController.viewControllers?[1] as! UINavigationController
@@ -179,11 +172,6 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
             let orgSettingsViewController = navSettingsViewController.topViewController as! OrgSettingsViewController
             orgSettingsViewController.currentOrg = self.currentOrg
-            
-            
-            
-//            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
-//            orgSettingsViewController.currentOrg = self.currentOrg
         }
     }
 }

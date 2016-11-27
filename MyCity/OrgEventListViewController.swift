@@ -46,11 +46,5 @@ class OrgEventListViewController: UIViewController, UISearchBarDelegate {
             orgEventListTableViewController.currentOrg = self.currentOrg
             orgEventListTableViewController.orgEventListViewController = self
         }
-        
-//        if segue.identifier == "orgFilterSegue" {
-//            let orgEventListTableViewController = segue.destination  as! OrgEventListTableViewController
-//
-//        }
     }
-
 }

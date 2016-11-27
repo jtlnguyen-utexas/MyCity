@@ -22,10 +22,8 @@ class OrgEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        
-        
+    
         // here, we fill all of the fields with the appropriate event data
         eventNameField.text = currEvent?.eventName
         eventLocationField.text = currEvent?.eventAddress
@@ -66,7 +64,6 @@ class OrgEventViewController: UIViewController {
         prefsRef.updateChildValues(childUpdates)
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -76,5 +73,4 @@ class OrgEventViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

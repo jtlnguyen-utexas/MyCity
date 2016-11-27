@@ -53,7 +53,7 @@ class PasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
                 self.recoveryMessage.text = "Please Enter a Valid Email Address!"
             } else {
                 // Password reset email sent.
-                self.recoveryMessage.text = "Password Reovery Email Sent!"
+                self.recoveryMessage.text = "Password Recovery Email Sent!"
             }
         }
     }

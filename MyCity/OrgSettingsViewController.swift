@@ -42,7 +42,6 @@ class OrgSettingsViewController: UIViewController, UITextFieldDelegate {
         orgAddressField.delegate = self
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -175,5 +174,4 @@ class OrgSettingsViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

@@ -99,7 +99,6 @@
 		15089F451DAACCC800ED0E80 /* MyCity */ = {
 			isa = PBXGroup;
 			children = (
-				28FA7E411DD525300036C412 /* EventMapViewController.swift */,
 				15089F461DAACCC800ED0E80 /* AppDelegate.swift */,
 				15089F4A1DAACCC800ED0E80 /* Main.storyboard */,
 				151BB2CC1DC1A4C1004518A9 /* Org Interface */,
@@ -146,6 +145,7 @@
 				1FEB5D961DC0892000F307A9 /* EventViewController.swift */,
 				1FEB5D941DC0890000F307A9 /* EventsTableViewController.swift */,
 				1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */,
+				28FA7E411DD525300036C412 /* EventMapViewController.swift */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";

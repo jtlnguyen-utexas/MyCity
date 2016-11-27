@@ -128,7 +128,6 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
                 }
                 else {
                     print("Failure - Account Creation Failed!")
-                    print(error)
                     self.alertMessageLabel.text = "Email already in use!"
                 }
             }
@@ -156,12 +155,7 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
             
             let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
             let orgEventListViewController = navBarController.topViewController as! OrgEventListViewController
-            print("our current user val is: \(self.currentOrg!)")
             orgEventListViewController.currentOrg = self.currentOrg
-        
-            
-//            let orgSettingsViewController = tabBarController.viewControllers?[2] as! OrgSettingsViewController
-//            orgSettingsViewController.currentOrg = self.currentOrg
         }
     }
 }

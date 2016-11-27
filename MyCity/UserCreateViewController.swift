@@ -62,7 +62,6 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    
     func createNewUser(email: String, password: String) {
         if email != "" && password != "" {
             FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
@@ -92,7 +91,6 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
                 }
                 else {
                     print("Failure - Account Creation Failed!")
-                    print(error)
                     self.alertLabel.text = "Email already in use!"
                 }
             }

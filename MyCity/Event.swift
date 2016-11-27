@@ -110,20 +110,15 @@ class Event: NSObject {
     }
     
     func forwardGeocoding(address: String) {
-        print("hi")
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            print("fam")
             if error != nil {
                 print(error)
-                print("get in here?????")
                 return
             }
             if (placemarks?.count)! > 0 {
-                print("we got it")
                 let placemark = placemarks?[0]
                 let location = placemark?.location
                 let coordinate = location?.coordinate
-                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
                 self._latitude = "\(coordinate!.latitude)"
                 self._longitude = "\(coordinate!.longitude)"
                 

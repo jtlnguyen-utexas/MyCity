@@ -45,7 +45,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -60,7 +59,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
     @IBAction func eventAddBtn(_ sender: AnyObject) {
         let newEvent = Event(eventKey: (currentOrg?.emailAddress)!, eventName: eventNameField.text!, eventStart: startField.text!, eventEnd: endField.text!, eventDescription: eventDescriptionField.text!, eventAddress: eventAddressField.text!, eventTags: eventTagsField.text!, eventCheckIns: 0, eventRSVPs: 0, orgEmail: (currentOrg?.emailAddress)!, latitude: "", longitude: "", eventHash: "")
         newEvent.forwardGeocoding(address: newEvent.eventAddress)
-        print("get here")
 
         //eventMsgLabel.text = "Event added!"
         
@@ -108,6 +106,4 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
-
 }
