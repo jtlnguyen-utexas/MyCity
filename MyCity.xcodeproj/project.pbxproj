@@ -22,6 +22,10 @@
 		15AABBFB1DC05C83005EF59F /* UserCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AABBFA1DC05C83005EF59F /* UserCreateViewController.swift */; };
 		15BF16941DECA95D00F8C9FC /* OrgSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF16931DECA95D00F8C9FC /* OrgSettingsTableViewController.swift */; };
 		15BF16961DECAEE900F8C9FC /* OrgSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF16951DECAEE900F8C9FC /* OrgSettingsTableViewCell.swift */; };
+		15BF16981DECC1C900F8C9FC /* UserCreateSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF16971DECC1C900F8C9FC /* UserCreateSettingsTableViewCell.swift */; };
+		15BF169A1DECC1E100F8C9FC /* UserCreateSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF16991DECC1E100F8C9FC /* UserCreateSettingsTableViewController.swift */; };
+		15BF169C1DECD28400F8C9FC /* OrgCreateSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF169B1DECD28400F8C9FC /* OrgCreateSettingsTableViewController.swift */; };
+		15BF169E1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF169D1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift */; };
 		1F97EB601DD2ECBD00EE609C /* OrgEventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97EB5F1DD2ECBD00EE609C /* OrgEventListTableViewController.swift */; };
 		1F97EB621DD2F0B600EE609C /* OrgEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97EB611DD2F0B600EE609C /* OrgEventViewController.swift */; };
 		1FEB5D931DC088AE00F307A9 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */; };
@@ -56,6 +60,10 @@
 		15AABBFA1DC05C83005EF59F /* UserCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateViewController.swift; sourceTree = "<group>"; };
 		15BF16931DECA95D00F8C9FC /* OrgSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgSettingsTableViewController.swift; sourceTree = "<group>"; };
 		15BF16951DECAEE900F8C9FC /* OrgSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		15BF16971DECC1C900F8C9FC /* UserCreateSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		15BF16991DECC1E100F8C9FC /* UserCreateSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateSettingsTableViewController.swift; sourceTree = "<group>"; };
+		15BF169B1DECD28400F8C9FC /* OrgCreateSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgCreateSettingsTableViewController.swift; sourceTree = "<group>"; };
+		15BF169D1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgCreateSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		1F97EB5F1DD2ECBD00EE609C /* OrgEventListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventListTableViewController.swift; sourceTree = "<group>"; };
 		1F97EB611DD2F0B600EE609C /* OrgEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventViewController.swift; sourceTree = "<group>"; };
 		1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +147,10 @@
 		1FEB5D9B1DC089C300F307A9 /* Login/Register */ = {
 			isa = PBXGroup;
 			children = (
+				15BF169B1DECD28400F8C9FC /* OrgCreateSettingsTableViewController.swift */,
+				15BF169D1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift */,
+				15BF16971DECC1C900F8C9FC /* UserCreateSettingsTableViewCell.swift */,
+				15BF16991DECC1E100F8C9FC /* UserCreateSettingsTableViewController.swift */,
 				28BB21C41DC278B900F173A5 /* PasswordRecoveryViewController.swift */,
 				280980071DB5D48200234049 /* InitialViewController.swift */,
 				28FAB0201DB42BD300DE151B /* CreateAccountViewController.swift */,
@@ -327,10 +339,14 @@
 				151BB2C71DC1A46E004518A9 /* OrgEventListViewController.swift in Sources */,
 				15089F471DAACCC800ED0E80 /* AppDelegate.swift in Sources */,
 				15BF16961DECAEE900F8C9FC /* OrgSettingsTableViewCell.swift in Sources */,
+				15BF169C1DECD28400F8C9FC /* OrgCreateSettingsTableViewController.swift in Sources */,
+				15BF169E1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift in Sources */,
+				15BF16981DECC1C900F8C9FC /* UserCreateSettingsTableViewCell.swift in Sources */,
 				280980081DB5D48200234049 /* InitialViewController.swift in Sources */,
 				1FEB5D991DC0894D00F307A9 /* SettingsViewController.swift in Sources */,
 				15089F4F1DAACCC800ED0E80 /* MyCity.xcdatamodeld in Sources */,
 				1FEB5D971DC0892000F307A9 /* EventViewController.swift in Sources */,
+				15BF169A1DECC1E100F8C9FC /* UserCreateSettingsTableViewController.swift in Sources */,
 				151BB2C91DC1A4A5004518A9 /* OrgSettingsViewController.swift in Sources */,
 				151BB2CE1DC1A513004518A9 /* Org.swift in Sources */,
 				28FAB9E21DB44D0E009AA971 /* User.swift in Sources */,

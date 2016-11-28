@@ -25,12 +25,6 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var orgNameField: UITextField!
     @IBOutlet var orgAddressField: UITextField!
     
-    // Switches
-    @IBOutlet var nightlifeSwitch: UISwitch!
-    @IBOutlet var switchFood: UISwitch!
-    @IBOutlet var sportsSwitch: UISwitch!
-    @IBOutlet var freeSwitch: UISwitch!
-    
     // Label
     @IBOutlet var alertMessageLabel: UILabel!
     
@@ -43,10 +37,6 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard)))
         
         alertMessageLabel.text = ""
-        nightlifeSwitch.setOn(false, animated: true)
-        switchFood.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,34 +58,6 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Actions
-
-    @IBAction func nightlifeSwitchChanged(_ sender: AnyObject) {
-        switchFood.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Nightlife"
-    }
-    
-    @IBAction func foodSwitchChanged(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Food"
-    }
-    
-    @IBAction func sportsSwitchChanged(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        switchFood.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Sports"
-    }
-    
-    @IBAction func freeSwitchChanged(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        switchFood.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        category = "Free!"
-    }
     
     @IBAction func nextBtnClicked(_ sender: AnyObject) {
         createNewOrg(email: orgEmail!, password: orgPassword!)
@@ -140,6 +102,11 @@ class OrgCreateViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "OrgCreateSettingsSegue" {
+            let orgCreateSettingsTableViewController = segue.destination as! OrgCreateSettingsTableViewController
+            orgCreateSettingsTableViewController.orgCreateViewController = self
+        }
         
         // upon successful registration, send user obj to event list
         if segue.identifier == "OrgSuccessRegistrationSegue" {

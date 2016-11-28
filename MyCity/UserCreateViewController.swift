@@ -20,15 +20,12 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
     var userPassword: String?
     var currentUser: User?
     
+    let categoriesArr = ["Nightlife", "Sports", "Food", "Free"]
+    var categoriesDict: [String:Bool] = ["Nightlife":false, "Sports":false, "Food":false, "Free":false]
+    
     // Fields
     @IBOutlet var firstNameField: UITextField!
     @IBOutlet var lastNameField: UITextField!
-    
-    // Switches
-    @IBOutlet var nightlifeSwitch: UISwitch!
-    @IBOutlet var foodSwitch: UISwitch!
-    @IBOutlet var sportsSwitch: UISwitch!
-    @IBOutlet var freeSwitch: UISwitch!
     
     // Labels
     @IBOutlet var alertLabel: UILabel!
@@ -69,7 +66,7 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
                 if error == nil {
                     print("Success - Account Created!")
                     // make new user and add an empty object to database
-                    let newUser = User(userKey: email, firstName: self.firstNameField.text!, lastName: self.lastNameField.text!, emailAddress: email, location: "", nightlife: self.nightlifeSwitch.isOn, sports: self.sportsSwitch.isOn, food: self.foodSwitch.isOn, free: self.freeSwitch.isOn, radius: 0.0, checkInRatio: "", numEventsAttended: 0)
+                    let newUser = User(userKey: email, firstName: self.firstNameField.text!, lastName: self.lastNameField.text!, emailAddress: email, location: "", nightlife: self.categoriesDict["Nightlife"]!, sports: self.categoriesDict["Sports"]!, food: self.categoriesDict["Food"]!, free: self.categoriesDict["Free"]!, radius: 0.0, checkInRatio: "", numEventsAttended: 0)
                     self.currentUser = newUser
                     let newString = (email as NSString).replacingOccurrences(of: ".", with: "@")
                     let userRef = FIRDatabase.database().reference(withPath: newString)
@@ -78,10 +75,10 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
                     // make a separate one for preferences (for faster loading)
                     let prefRef = FIRDatabase.database().reference(withPath: "\(newString)pref")
                     prefRef.setValue([
-                        "nightlife": self.nightlifeSwitch.isOn,
-                        "sports": self.sportsSwitch.isOn,
-                        "food": self.foodSwitch.isOn,
-                        "free": self.freeSwitch.isOn,
+                        "nightlife": self.categoriesDict["Nightlife"]!,
+                        "sports": self.categoriesDict["Sports"]!,
+                        "food": self.categoriesDict["Food"]!,
+                        "free": self.categoriesDict["Free"]!,
                         "radius": 25.0,
                         "checkInRatio": "",
                         "numEventsAttended": 0
@@ -110,6 +107,11 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "userCreateSettingsSegue" {
+            let userCreateSettingsTableViewController = segue.destination as! UserCreateSettingsTableViewController
+            userCreateSettingsTableViewController.userCreateViewController = self
+        }
         
         // upon successful registration, send user obj to event list
         if segue.identifier == "UserSuccessRegistrationSegue" {
