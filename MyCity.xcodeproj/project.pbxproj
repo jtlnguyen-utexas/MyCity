@@ -12,6 +12,8 @@
 		15089F4F1DAACCC800ED0E80 /* MyCity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15089F4D1DAACCC800ED0E80 /* MyCity.xcdatamodeld */; };
 		15089F511DAACCC800ED0E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15089F501DAACCC800ED0E80 /* Assets.xcassets */; };
 		15089F541DAACCC800ED0E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15089F521DAACCC800ED0E80 /* LaunchScreen.storyboard */; };
+		151434A71DEBC70100102D90 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151434A61DEBC70100102D90 /* SettingsTableViewController.swift */; };
+		151434A91DEBC74A00102D90 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151434A81DEBC74A00102D90 /* SettingsTableViewCell.swift */; };
 		151BB2C71DC1A46E004518A9 /* OrgEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BB2C61DC1A46E004518A9 /* OrgEventListViewController.swift */; };
 		151BB2C91DC1A4A5004518A9 /* OrgSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BB2C81DC1A4A5004518A9 /* OrgSettingsViewController.swift */; };
 		151BB2CE1DC1A513004518A9 /* Org.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BB2CD1DC1A513004518A9 /* Org.swift */; };
@@ -42,6 +44,8 @@
 		15089F501DAACCC800ED0E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15089F531DAACCC800ED0E80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15089F551DAACCC800ED0E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		151434A61DEBC70100102D90 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		151434A81DEBC74A00102D90 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		151BB2C61DC1A46E004518A9 /* OrgEventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventListViewController.swift; sourceTree = "<group>"; };
 		151BB2C81DC1A4A5004518A9 /* OrgSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgSettingsViewController.swift; sourceTree = "<group>"; };
 		151BB2CD1DC1A513004518A9 /* Org.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Org.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 		1FEB5D9C1DC089FD00F307A9 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				151434A81DEBC74A00102D90 /* SettingsTableViewCell.swift */,
+				151434A61DEBC70100102D90 /* SettingsTableViewController.swift */,
 				1FEB5D981DC0894D00F307A9 /* SettingsViewController.swift */,
 				1FEB5D961DC0892000F307A9 /* EventViewController.swift */,
 				1FEB5D941DC0890000F307A9 /* EventsTableViewController.swift */,
@@ -307,6 +313,7 @@
 				151DA94C1DD2A8680029C90B /* AddEventViewController.swift in Sources */,
 				1FEB5D951DC0890000F307A9 /* EventsTableViewController.swift in Sources */,
 				28FAB0211DB42BD300DE151B /* CreateAccountViewController.swift in Sources */,
+				151434A91DEBC74A00102D90 /* SettingsTableViewCell.swift in Sources */,
 				1F97EB601DD2ECBD00EE609C /* OrgEventListTableViewController.swift in Sources */,
 				153D1BA41DC06536007BD2CD /* OrgCreateViewController.swift in Sources */,
 				1F97EB621DD2F0B600EE609C /* OrgEventViewController.swift in Sources */,
@@ -321,6 +328,7 @@
 				28FAB9E21DB44D0E009AA971 /* User.swift in Sources */,
 				1FEB5D931DC088AE00F307A9 /* EventListViewController.swift in Sources */,
 				15AABBFB1DC05C83005EF59F /* UserCreateViewController.swift in Sources */,
+				151434A71DEBC70100102D90 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
