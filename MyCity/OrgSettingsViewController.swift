@@ -23,12 +23,6 @@ class OrgSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var orgNameField: UITextField!
     @IBOutlet var orgAddressField: UITextField!
     
-    // Switches
-    @IBOutlet var nightlifeSwitch: UISwitch!
-    @IBOutlet var sportsSwitch: UISwitch!
-    @IBOutlet var foodSwitch: UISwitch!
-    @IBOutlet var freeSwitch: UISwitch!
-    
     // Labels
     @IBOutlet var viewCountLabel: UILabel!
     @IBOutlet var eventCountLabel: UILabel!
@@ -76,27 +70,18 @@ class OrgSettingsViewController: UIViewController, UITextFieldDelegate {
             // Get user values
             let value = snapshot.value as? NSDictionary
             
-            self.nightlifeSwitch.setOn(false, animated: false)
-            self.sportsSwitch.setOn(false, animated: false)
-            self.foodSwitch.setOn(false, animated: false)
-            self.freeSwitch.setOn(false, animated: false)
-            
             let retrievedCategory = value?["category"] as! String
             
             if retrievedCategory == "Nightlife" {
-                self.nightlifeSwitch.setOn(true, animated: false)
                 self.category = "Nightlife"
             }
             else if retrievedCategory == "Sports" {
-                self.sportsSwitch.setOn(true, animated: false)
                 self.category = "Sports"
             }
             else if retrievedCategory == "Food" {
-                self.foodSwitch.setOn(true, animated: false)
                 self.category = "Food"
             }
             else if retrievedCategory == "Free!" {
-                self.freeSwitch.setOn(true, animated: false)
                 self.category = "Free!"
             }
             else {
@@ -119,7 +104,6 @@ class OrgSettingsViewController: UIViewController, UITextFieldDelegate {
             "orgName": self.orgNameField.text!,
             "location": self.orgAddressField.text!,
             "category": self.category! as NSString,
-            "free": self.freeSwitch.isOn,
             "userViewCount": 0,
             "numEventsAttended": 0
         ]
@@ -130,48 +114,25 @@ class OrgSettingsViewController: UIViewController, UITextFieldDelegate {
         prefsRef.updateChildValues(childUpdates)
     }
     
-    // MARK: Actions
-    
-    @IBAction func nightlifeSwitchPressed(_ sender: AnyObject) {
-        foodSwitch.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Nightlife"
-    }
-    
-    @IBAction func sportsSwitchPressed(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        foodSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Sports"
-    }
-    
-    @IBAction func foodSwitchPressed(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        freeSwitch.setOn(false, animated: true)
-        category = "Food"
-    }
-    
-    @IBAction func freeSwitchPressed(_ sender: AnyObject) {
-        nightlifeSwitch.setOn(false, animated: true)
-        foodSwitch.setOn(false, animated: true)
-        sportsSwitch.setOn(false, animated: true)
-        category = "Free!"
-    }
 
     @IBAction func logoutButtonPressed(_ sender: AnyObject) {
         viewWillDisappear(true)
         try! FIRAuth.auth()!.signOut()
         performSegue(withIdentifier: "BackLoginSegue", sender: nil)
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "orgSettingsSegue" {
+            let settingsTableViewController = segue.destination as! OrgSettingsTableViewController
+            settingsTableViewController.currentOrg = self.currentOrg
+            settingsTableViewController.orgSettingsViewController = self
+            settingsTableViewController.category = self.category
+        }
     }
-    */
+    
 }
