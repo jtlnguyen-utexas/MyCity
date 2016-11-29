@@ -56,7 +56,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
     
     @IBAction func userCreateButton(_ sender: AnyObject) {
-        if passwordField.text == rePasswordField.text {
+        if(emailField.text == "" || passwordField.text == "" || rePasswordField.text == ""){
+            alertLabel.text = "Please Fill out all Fields Above!"
+        }else if passwordField.text == rePasswordField.text {
             performSegue(withIdentifier: "UserCreateSegue", sender: nil)
         }
         else {
@@ -65,7 +67,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func orgCreateButton(_ sender: AnyObject) {
-        if passwordField.text == rePasswordField.text {
+        if(emailField.text == "" || passwordField.text == "" || rePasswordField.text == ""){
+            alertLabel.text = "Please Fill out all Fields Above!"
+        }else if passwordField.text == rePasswordField.text {
             performSegue(withIdentifier: "OrgCreateSegue", sender: nil)
         }
         else {

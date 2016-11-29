@@ -28,6 +28,8 @@ class UserCreateSettingsTableViewController: UITableViewController, UserCreateSe
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.layer.cornerRadius = 10
+        self.tableView.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
