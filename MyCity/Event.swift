@@ -131,12 +131,12 @@ class Event: NSObject {
                 let orgRef = FIRDatabase.database().reference(withPath: newString)
                 orgRef.setValue(self.toAnyObject())
                 
-                if (placemark?.areasOfInterest?.count)! > 0 {
-                    let areaOfInterest = placemark!.areasOfInterest![0]
-                    print(areaOfInterest)
-                } else {
-                    print("No area of interest found.")
-                }
+//                if (placemark?.areasOfInterest?.count)! > 0 {
+//                    let areaOfInterest = placemark!.areasOfInterest![0]
+//                    print(areaOfInterest)
+//                } else {
+//                    print("No area of interest found.")
+//                }
             }
         })
     }

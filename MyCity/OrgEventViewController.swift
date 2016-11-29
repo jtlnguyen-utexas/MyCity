@@ -8,28 +8,46 @@
 
 import UIKit
 import Firebase
+import MapKit
+import CoreLocation
 
-class OrgEventViewController: UIViewController {
+class OrgEventViewController: UIViewController, UITextFieldDelegate {
     
     var currentOrg: Org?
     var currEvent: Event?
+    var dateField: String?
+    var _latitude: String?
+    var _longitude: String?
+    
     
     @IBOutlet var eventNameField: UITextField!
-    @IBOutlet var orgNameLabel: UILabel!
     @IBOutlet var eventLocationField: UITextField!
     @IBOutlet var eventDescriptionField: UITextField!
     @IBOutlet var eventTagsField: UITextField!
+    @IBOutlet var startField: UITextField!
+    @IBOutlet var endField: UITextField!
+    
+    @IBOutlet var checkInLabel: UILabel!
+    @IBOutlet var rsvpLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
+        startField.delegate = self
+        endField.delegate = self
+        
         // here, we fill all of the fields with the appropriate event data
         eventNameField.text = currEvent?.eventName
         eventLocationField.text = currEvent?.eventAddress
         eventDescriptionField.text = currEvent?.eventDescription
         eventTagsField.text = (currEvent?.eventTags)!
-        orgNameLabel.text = currentOrg?.orgName
+        let checkInCount = (currEvent?.eventCheckIns)!
+        let rsvpCount = (currEvent?.eventRSVPs)!
+        checkInLabel.text = String(checkInCount)
+        rsvpLabel.text = String(rsvpCount)
+        startField.text = currEvent?.eventStart
+        endField.text = currEvent?.eventEnd
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,28 +58,69 @@ class OrgEventViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         // when the user exits, save all of this data!
 
-        let prefsRef = FIRDatabase.database().reference()
-        let toBePosted : Dictionary<String, Any> = [
-            "eventKey": currEvent!.eventKey,
-            "eventName": eventNameField.text!,
-            "eventStart": currEvent!.eventStart,
-            "eventEnd": currEvent!.eventEnd,
-            "eventDescription": eventDescriptionField.text!,
-            "eventAddress": eventLocationField.text!,
-            "eventTags": eventTagsField.text!,
-            "eventCheckIns": currEvent!.eventCheckIns,
-            "eventRSVPs": currEvent!.eventRSVPs,
-            "latitude": currEvent!.latitude,
-            "longitude": currEvent!.longitude,
-            "orgEmail": currEvent!.orgEmail,
-            "eventHash": currEvent!.eventHash
-        ]
-        
-        let email = ((currEvent!.orgEmail) as NSString).replacingOccurrences(of: ".", with: "@")
-        let newString = "e \(email) \(currEvent!.eventHash)"
-        let childUpdates = ["\(newString)": toBePosted]
-        
-        prefsRef.updateChildValues(childUpdates)
+        CLGeocoder().geocodeAddressString(eventLocationField.text!, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print(error)
+                return
+            }
+            let placemark = placemarks?[0]
+            let location = placemark?.location
+            let coordinate = location?.coordinate
+            self._latitude = "\(coordinate!.latitude)"
+            self._longitude = "\(coordinate!.longitude)"
+            
+            let prefsRef = FIRDatabase.database().reference()
+            let toBePosted : Dictionary<String, Any> = [
+                "eventKey": self.currEvent!.eventKey,
+                "eventName": self.eventNameField.text!,
+                "eventStart": self.startField.text!,
+                "eventEnd": self.endField.text!,
+                "eventDescription": self.eventDescriptionField.text!,
+                "eventAddress": self.eventLocationField.text!,
+                "eventTags": self.eventTagsField.text!,
+                "eventCheckIns": self.currEvent!.eventCheckIns,
+                "eventRSVPs": self.currEvent!.eventRSVPs,
+                "latitude": self._latitude!,
+                "longitude": self._longitude!,
+                "orgEmail": self.currEvent!.orgEmail,
+                "eventHash": self.currEvent!.eventHash
+            ]
+            
+            let email = ((self.currEvent!.orgEmail) as NSString).replacingOccurrences(of: ".", with: "@")
+            let newString = "e \(email) \(self.currEvent!.eventHash)"
+            let childUpdates = ["\(newString)": toBePosted]
+            
+            prefsRef.updateChildValues(childUpdates)
+        })
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        dateField = textField.text
+        let datePicker = UIDatePicker()
+        textField.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(self.datePickerChanged(sender:)), for: .allEvents)
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.text = dateField
+        return true
+    }
+    
+    func datePickerChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        let dateStr:String = formatter.string(from: sender.date)
+        dateField = dateStr
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     /*
