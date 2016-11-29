@@ -170,7 +170,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Upload-50" translatesAutoresizingMaskIntoConstraints="NO" id="Z8o-mC-wYb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder_2" translatesAutoresizingMaskIntoConstraints="NO" id="Z8o-mC-wYb">
                                 <rect key="frame" x="85" y="183" width="204" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -272,7 +272,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Upload-50" translatesAutoresizingMaskIntoConstraints="NO" id="jSj-Bl-9Nq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder_2" translatesAutoresizingMaskIntoConstraints="NO" id="jSj-Bl-9Nq">
                                 <rect key="frame" x="137" y="88" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1372,7 +1372,7 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0P7-Di-wI3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder_2" translatesAutoresizingMaskIntoConstraints="NO" id="0P7-Di-wI3">
                                 <rect key="frame" x="83" y="19" width="208" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1537,15 +1537,15 @@ aXF1YW0gdWx0cmljaWVzIG5pc2wgaXBzdW0sIG5lYyBsdWN0dXMgZGlhbSBzb2RhbGVzIGluLiA
         </scene>
     </scenes>
     <resources>
-        <image name="Upload-50" width="50" height="50"/>
         <image name="gear" width="30" height="30"/>
         <image name="list-fat-7" width="30" height="30"/>
         <image name="paper-map-7" width="30" height="30"/>
         <image name="pin-map-7" width="30" height="30"/>
+        <image name="placeholder_2" width="1280" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Knj-P8-8eh"/>
-        <segue reference="EOj-WW-XKW"/>
         <segue reference="jY6-VZ-Rs2"/>
+        <segue reference="Be2-GK-eUt"/>
+        <segue reference="Knj-P8-8eh"/>
     </inferredMetricsTieBreakers>
 </document>
