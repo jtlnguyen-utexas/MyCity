@@ -102,6 +102,7 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                     // now, we have an event, so:
                     
                     if filter == "Time" {
+                        
                         // have to add all ongoing events first
                         let date = Date()
                         
@@ -125,6 +126,7 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                         }
                     }
                     else if filter == "Location" {
+                        
                         // otherwise, find all events within the range
                         let latitude = Float(value?["latitude"] as! String)
                         let longitude = Float(value?["longitude"] as! String)
