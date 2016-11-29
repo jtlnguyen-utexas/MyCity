@@ -18,6 +18,7 @@ class EventViewController: UIViewController {
     @IBOutlet var eventName: UILabel!
     @IBOutlet var eventAddress: UILabel!
     @IBOutlet var eventDescription: UILabel!
+    @IBOutlet weak var eventTime: UILabel!
     
     @IBAction func userGoing(_ sender: Any) {
         let prefsRef = FIRDatabase.database().reference()
@@ -78,6 +79,7 @@ class EventViewController: UIViewController {
         eventName.text = currEvent?.eventName
         eventAddress.text = currEvent?.eventAddress
         eventDescription.text = currEvent?.eventDescription
+        eventTime.text = "\(currEvent!.eventStart) - \(currEvent!.eventEnd)"
     }
 
     override func didReceiveMemoryWarning() {
