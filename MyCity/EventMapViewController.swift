@@ -91,18 +91,19 @@ class EventMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
                     // now, we have an event, so:
                         
                         // have to add all ongoing events first
-//                        let date = Date()
+                        let date = Date()
                     
-//                        let formatter = DateFormatter()
-//                        formatter.dateFormat = "MM/dd/yy, hh:mm aa"
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "MM/dd/yy, hh:mm aa"
                     
 //                        let startEvent : String = value?["eventStart"] as! String
 //                        let startDate = formatter.date(from: startEvent)
                     
-//                        let endEvent : String = value?["eventEnd"] as! String
-//                        let endDate = formatter.date(from: endEvent)
+                        let endEvent : String = value?["eventEnd"] as! String
+                        let endDate = formatter.date(from: endEvent)
                     
-//                        if endDate! >= date && startDate! <= date {
+                        // Only Show Events that are currently happening or that are going to happen at some point in the future
+                        if endDate! >= date {
                             print("Valid Event Date!")
                             // is an ongoing event, so add it:
                             let event = Event(eventKey: value?["eventKey"] as! String, eventName: value?["eventName"] as! String, eventStart: value?["eventStart"] as! String, eventEnd: value?["eventEnd"] as! String, eventDescription: value?["eventDescription"] as! String, eventAddress: value?["eventAddress"] as! String, eventTags: value?["eventTags"] as! String, eventCheckIns: value?["eventCheckIns"] as! Int, eventRSVPs: value?["eventRSVPs"] as! Int, orgEmail: email, latitude: value?["latitude"] as! String, longitude: value?["longitude"] as! String, eventHash: value?["eventHash"] as! String)
@@ -113,8 +114,8 @@ class EventMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
                                 print("Add Event Date!")
                                 self.events.append(event)
                             }
-//                        }
-                    
+                        }
+                
                     
                 }
                 self.placePins()

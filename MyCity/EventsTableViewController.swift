@@ -101,28 +101,33 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                     
                     // now, we have an event, so:
                     
+                    // Get Event Date
+                    let date = Date()
+                    
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "MM/dd/yy, hh:mm aa"
+                    
+                    let startEvent : String = value?["eventStart"] as! String
+                    let startDate = formatter.date(from: startEvent)
+                    
+                    let endEvent : String = value?["eventEnd"] as! String
+                    let endDate = formatter.date(from: endEvent)
+                    
+                  
+                    
                     if filter == "Time" {
                         
-                        // have to add all ongoing events first
-                        let date = Date()
-                        
-                        let formatter = DateFormatter()
-                        formatter.dateFormat = "MM/dd/yy, hh:mm aa"
-                        
-                        let startEvent : String = value?["eventStart"] as! String
-                        let startDate = formatter.date(from: startEvent)
-                        
-                        let endEvent : String = value?["eventEnd"] as! String
-                        let endDate = formatter.date(from: endEvent)
-                        
-                        if endDate! >= date && startDate! <= date {
+                        if endDate! >= date{
                             // is an ongoing event, so add it:
                             let event = Event(eventKey: value?["eventKey"] as! String, eventName: value?["eventName"] as! String, eventStart: value?["eventStart"] as! String, eventEnd: value?["eventEnd"] as! String, eventDescription: value?["eventDescription"] as! String, eventAddress: value?["eventAddress"] as! String, eventTags: value?["eventTags"] as! String, eventCheckIns: value?["eventCheckIns"] as! Int, eventRSVPs: value?["eventRSVPs"] as! Int, orgEmail: email, latitude: value?["latitude"] as! String, longitude: value?["longitude"] as! String, eventHash: value?["eventHash"] as! String)
                             tempEvents.append(event)
                             self.events.removeAll()
                             for event in tempEvents {
                                 self.events.append(event)
+//
                             }
+                            // Sort Event List by Start Time
+                            self.events.sort(by: self.eventTimeComparator)
                         }
                     }
                     else if filter == "Location" {
@@ -132,7 +137,9 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                         let longitude = Float(value?["longitude"] as! String)
                         
                         let radius = self.currentUser?.radius
-                        if latitude! + radius! > Float(self.currentLat!) && latitude! - radius! < Float(self.currentLat!) && longitude! + radius! > Float(self.currentLong!) && longitude! - radius! < Float(self.currentLong!) {
+//                        if latitude! + radius! > Float(self.currentLat!) && latitude! - radius! < Float(self.currentLat!) && longitude! + radius! > Float(self.currentLong!) && longitude! - radius! < Float(self.currentLong!) {
+                        
+                        if endDate! >= date{
                             // event falls within our lat/long radius
                             let event = Event(eventKey: value?["eventKey"] as! String, eventName: value?["eventName"] as! String, eventStart: value?["eventStart"] as! String, eventEnd: value?["eventEnd"] as! String, eventDescription: value?["eventDescription"] as! String, eventAddress: value?["eventAddress"] as! String, eventTags: value?["eventTags"] as! String, eventCheckIns: value?["eventCheckIns"] as! Int, eventRSVPs: value?["eventRSVPs"] as! Int, orgEmail: email, latitude: value?["latitude"] as! String, longitude: value?["longitude"] as! String, eventHash: value?["eventHash"] as! String)
                             tempEvents.append(event)
@@ -144,17 +151,18 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                     }
                     else {
                         // lastly, filter by popularity (default is any event that has at least 1 person)
-                        let numPeople = value?["eventCheckIns"] as! Int
-                        
-                        if numPeople > 0 {
+                        if endDate! >= date{
                             let event = Event(eventKey: value?["eventKey"] as! String, eventName: value?["eventName"] as! String, eventStart: value?["eventStart"] as! String, eventEnd: value?["eventEnd"] as! String, eventDescription: value?["eventDescription"] as! String, eventAddress: value?["eventAddress"] as! String, eventTags: value?["eventTags"] as! String, eventCheckIns: value?["eventCheckIns"] as! Int, eventRSVPs: value?["eventRSVPs"] as! Int, orgEmail: email, latitude: value?["latitude"] as! String, longitude: value?["longitude"] as! String, eventHash: value?["eventHash"] as! String)
                             tempEvents.append(event)
                             self.events.removeAll()
                             for event in tempEvents {
                                 self.events.append(event)
                             }
-
+                            // Sort Event List by the number of people attending
+                            self.events.sort(by: self.eventPopularityComparator)
                         }
+                        
+                        
                     }
                     
 
@@ -164,6 +172,28 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         
         self.tableView.reloadData()
     }
+    
+//    Sort Event List by distance from the user Time
+//    func eventLocationComparator(event1: Event, event2: Event) -> Bool{
+//        return event1.
+//    }
+    
+    // Sort Event List by the number of people attending
+    func eventPopularityComparator(event1: Event, event2: Event) -> Bool{
+        return event1.eventCheckIns > event2.eventCheckIns
+    }
+    
+    // Sort Event List by Start Time
+    func eventTimeComparator(event1: Event, event2: Event) -> Bool{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy, hh:mm aa"
+        
+        let startDate1 = formatter.date(from: event1.eventStart)
+        let startDate2 = formatter.date(from: event2.eventStart)
+        
+        return startDate1! < startDate2!
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
