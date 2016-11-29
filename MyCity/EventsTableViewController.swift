@@ -170,8 +170,9 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func touchOutsideSearchBar() {
+    func touchOutsideSearchBar(sender:UITapGestureRecognizer) {
         eventListViewController?.searchBar.endEditing(true)
+        sender.cancelsTouchesInView = false
     }
 
     // MARK: - Table view data source

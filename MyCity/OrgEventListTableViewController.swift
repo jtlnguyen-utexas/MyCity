@@ -35,8 +35,10 @@ class OrgEventListTableViewController: UITableViewController {
         self.tableView.addGestureRecognizer(tap)
     }
     
-    func tappedTableView() {
+    func tappedTableView(sender:UITapGestureRecognizer) {
         orgEventListViewController?.seachBar.endEditing(true)
+        
+        sender.cancelsTouchesInView = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
