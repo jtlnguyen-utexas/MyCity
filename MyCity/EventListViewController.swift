@@ -46,6 +46,12 @@ class EventListViewController: UIViewController, UISearchBarDelegate {
             eventsTableViewController.currentUser = self.currentUser
             eventsTableViewController.eventListViewController = self
         }
+        
+        if segue.identifier == "ShowCalendarSegue" {
+            let calendarView = segue.destination as! CalendarView
+            let eventsTVC = self.childViewControllers[0] as! EventsTableViewController
+            calendarView.events = eventsTVC.events
+        }
     }
     
 }

@@ -36,12 +36,14 @@ PODS:
   - GoogleSymbolUtilities (1.1.2)
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
+  - JTAppleCalendar (6.0.5)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - JTAppleCalendar (~> 6.0)
 
 SPEC CHECKSUMS:
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
@@ -55,7 +57,8 @@ SPEC CHECKSUMS:
   GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  JTAppleCalendar: 7ea3f3e66fcbbb62978a01a58e3a3ae88fdad7cc
 
-PODFILE CHECKSUM: 46ee06f4d250df9522167b95390d9bae047c29ba
+PODFILE CHECKSUM: 0350a5371a2e9a069b4c94071427989f281334be
 
-COCOAPODS: 1.1.0.rc.3
+COCOAPODS: 1.1.1

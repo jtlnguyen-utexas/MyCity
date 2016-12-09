@@ -22,6 +22,11 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
     var timer = Timer()
     var eventListViewController: EventListViewController?
     
+    var nightlife: Bool = false
+    var sports: Bool = false
+    var food: Bool = false
+    var free: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,9 +80,38 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         events.self.removeAll()
     }
     
+    func getUserPreferences() {
+        // here, we have to retrieve the user object
+        let ref = FIRDatabase.database().reference()
+        
+        // have to parse email
+        let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
+        
+        // get a firebase snapchat
+        ref.child("\(newString)pref").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get user values
+            let value = snapshot.value as? NSDictionary
+            
+            self.nightlife = (value?["nightlife"] as! Bool)
+            self.sports = (value?["sports"] as! Bool)
+            self.food = (value?["food"] as! Bool)
+            self.free = (value?["free"] as! Bool)
+            
+//            self.radiusSlider.value = value?["radius"] as! Float
+//            self.radiusLabel.text = "\(value?["radius"] as! Float)"
+//            
+//            self.checkInLabel.text = "\(value?["checkInRatio"] as! String)"
+//            self.eventsAttendedLabel.text = "\(value?["numEventsAttended"] as! Int)"
+        })
+    }
+    
     func updateTable() {
         // here, we update the
         var tempEvents = [Event]()
+        
+        // now, we have to take into account the user's preferences as well
+        getUserPreferences()
         
         var filter: String!
         if eventListViewController?.filterControl.selectedSegmentIndex == 0 {
@@ -107,17 +141,16 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                     let formatter = DateFormatter()
                     formatter.dateFormat = "MM/dd/yy, hh:mm aa"
                     
-                    let startEvent : String = value?["eventStart"] as! String
-                    let startDate = formatter.date(from: startEvent)
-                    
                     let endEvent : String = value?["eventEnd"] as! String
                     let endDate = formatter.date(from: endEvent)
                     
-                  
+                    let eventTag: String = value?["eventTags"] as! String
+                    
+                    // if this event does not match to any of our preferences
+                    if ((self.nightlife && eventTag == "nightlife") || (self.sports && eventTag == "sports") || (self.food && eventTag == "food") || (self.free && eventTag == "free")) {
                     
                     if filter == "Time" {
-                        
-                        if endDate! >= date{
+                        if endDate! >= date {
                             // is an ongoing event, so add it:
                             let event = Event(eventKey: value?["eventKey"] as! String, eventName: value?["eventName"] as! String, eventStart: value?["eventStart"] as! String, eventEnd: value?["eventEnd"] as! String, eventDescription: value?["eventDescription"] as! String, eventAddress: value?["eventAddress"] as! String, eventTags: value?["eventTags"] as! String, eventCheckIns: value?["eventCheckIns"] as! Int, eventRSVPs: value?["eventRSVPs"] as! Int, orgEmail: email, latitude: value?["latitude"] as! String, longitude: value?["longitude"] as! String, eventHash: value?["eventHash"] as! String)
                             tempEvents.append(event)
@@ -161,11 +194,8 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                             // Sort Event List by the number of people attending
                             self.events.sort(by: self.eventPopularityComparator)
                         }
-                        
-                        
                     }
-                    
-
+                    }
                 }
             }
         })

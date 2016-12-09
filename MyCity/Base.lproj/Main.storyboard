@@ -629,7 +629,7 @@
                     <navigationItem key="navigationItem" id="FHU-RV-NY5">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" id="7sN-ny-S5g">
-                            <rect key="frame" x="66" y="8" width="244" height="29"/>
+                            <rect key="frame" x="40" y="8" width="244" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
@@ -639,6 +639,11 @@
                             </segments>
                             <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="Calendar" id="GpH-gC-0d0">
+                            <connections>
+                                <segue destination="0eM-d4-ugW" kind="show" identifier="ShowCalendarSegue" id="NYB-sG-Bym"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="filterControl" destination="7sN-ny-S5g" id="HYL-I5-dNi"/>
@@ -1373,6 +1378,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNZ-X9-eXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3644" y="-447.52623688155927"/>
+        </scene>
+        <!--Calendar View-->
+        <scene sceneID="HJx-hL-5CK">
+            <objects>
+                <viewController id="0eM-d4-ugW" customClass="CalendarView" customModule="MyCity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YGv-bC-IKY"/>
+                        <viewControllerLayoutGuide type="bottom" id="XTT-ui-aEJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JJ7-47-AJY" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="calendarView" destination="JJ7-47-AJY" id="Wom-nY-alo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGR-BU-tkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3766" y="-588"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="lm9-ep-Nqy">

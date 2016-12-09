@@ -28,6 +28,9 @@
 		15BF169E1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BF169D1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift */; };
 		1F97EB601DD2ECBD00EE609C /* OrgEventListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97EB5F1DD2ECBD00EE609C /* OrgEventListTableViewController.swift */; };
 		1F97EB621DD2F0B600EE609C /* OrgEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97EB611DD2F0B600EE609C /* OrgEventViewController.swift */; };
+		1F9E18641DFA399700D5A330 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9E18631DFA399700D5A330 /* CellView.xib */; };
+		1F9E18661DFA3A1300D5A330 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9E18651DFA3A1300D5A330 /* CellView.swift */; };
+		1F9E18681DFA3A9200D5A330 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9E18671DFA3A9200D5A330 /* CalendarView.swift */; };
 		1FEB5D931DC088AE00F307A9 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */; };
 		1FEB5D951DC0890000F307A9 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D941DC0890000F307A9 /* EventsTableViewController.swift */; };
 		1FEB5D971DC0892000F307A9 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB5D961DC0892000F307A9 /* EventViewController.swift */; };
@@ -66,6 +69,9 @@
 		15BF169D1DECD29B00F8C9FC /* OrgCreateSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgCreateSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		1F97EB5F1DD2ECBD00EE609C /* OrgEventListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventListTableViewController.swift; sourceTree = "<group>"; };
 		1F97EB611DD2F0B600EE609C /* OrgEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrgEventViewController.swift; sourceTree = "<group>"; };
+		1F9E18631DFA399700D5A330 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
+		1F9E18651DFA3A1300D5A330 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		1F9E18671DFA3A9200D5A330 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		1FEB5D921DC088AE00F307A9 /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		1FEB5D941DC0890000F307A9 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		1FEB5D961DC0892000F307A9 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +123,9 @@
 			children = (
 				15089F461DAACCC800ED0E80 /* AppDelegate.swift */,
 				15089F4A1DAACCC800ED0E80 /* Main.storyboard */,
+				1F9E18631DFA399700D5A330 /* CellView.xib */,
+				1F9E18651DFA3A1300D5A330 /* CellView.swift */,
+				1F9E18671DFA3A9200D5A330 /* CalendarView.swift */,
 				151BB2CC1DC1A4C1004518A9 /* Org Interface */,
 				1FEB5D9B1DC089C300F307A9 /* Login/Register */,
 				1FEB5D9C1DC089FD00F307A9 /* User Interface */,
@@ -264,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9E18641DFA399700D5A330 /* CellView.xib in Resources */,
 				15089F541DAACCC800ED0E80 /* LaunchScreen.storyboard in Resources */,
 				2800B8D11DB3F5D300C17AD8 /* GoogleService-Info.plist in Resources */,
 				15089F511DAACCC800ED0E80 /* Assets.xcassets in Resources */,
@@ -338,6 +348,7 @@
 				153D1BA41DC06536007BD2CD /* OrgCreateViewController.swift in Sources */,
 				1F97EB621DD2F0B600EE609C /* OrgEventViewController.swift in Sources */,
 				151BB2C71DC1A46E004518A9 /* OrgEventListViewController.swift in Sources */,
+				1F9E18661DFA3A1300D5A330 /* CellView.swift in Sources */,
 				15089F471DAACCC800ED0E80 /* AppDelegate.swift in Sources */,
 				15BF16961DECAEE900F8C9FC /* OrgSettingsTableViewCell.swift in Sources */,
 				15BF169C1DECD28400F8C9FC /* OrgCreateSettingsTableViewController.swift in Sources */,
@@ -345,6 +356,7 @@
 				15BF16981DECC1C900F8C9FC /* UserCreateSettingsTableViewCell.swift in Sources */,
 				280980081DB5D48200234049 /* InitialViewController.swift in Sources */,
 				1FEB5D991DC0894D00F307A9 /* SettingsViewController.swift in Sources */,
+				1F9E18681DFA3A9200D5A330 /* CalendarView.swift in Sources */,
 				15089F4F1DAACCC800ED0E80 /* MyCity.xcdatamodeld in Sources */,
 				1FEB5D971DC0892000F307A9 /* EventViewController.swift in Sources */,
 				15BF169A1DECC1E100F8C9FC /* UserCreateSettingsTableViewController.swift in Sources */,

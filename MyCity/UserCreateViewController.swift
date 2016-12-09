@@ -116,6 +116,10 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
         // upon successful registration, send user obj to event list
         if segue.identifier == "UserSuccessRegistrationSegue" {
             let tabBarController = segue.destination as! UITabBarController
+            
+            let tableViewController = tabBarController.viewControllers?[0] as! EventsTableViewController
+            tableViewController.currentUser = self.currentUser
+            
             let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
             let settingsViewController = navSettingsViewController.topViewController as! SettingsViewController
             settingsViewController.currentUser = self.currentUser
