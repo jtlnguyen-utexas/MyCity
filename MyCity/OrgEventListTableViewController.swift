@@ -30,16 +30,8 @@ class OrgEventListTableViewController: UITableViewController {
         // we retrieve all of the org data (their events)
         
         orgEventListViewController?.filterChoice.addTarget(self, action: #selector(self.segmentedControllerChanged), for: .allEvents)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedTableView))
-        self.tableView.addGestureRecognizer(tap)
     }
     
-    func tappedTableView(sender:UITapGestureRecognizer) {
-        orgEventListViewController?.seachBar.endEditing(true)
-        
-        sender.cancelsTouchesInView = false
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OrgEventListTableViewController.updateTable), userInfo: nil, repeats: true)
@@ -139,10 +131,6 @@ class OrgEventListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return self.events.count
     }
-    
-    func touchOutsideSearchBar() {
-        orgEventListViewController?.seachBar.endEditing(true)
-    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -156,10 +144,6 @@ class OrgEventListTableViewController: UITableViewController {
         cell.detailTextLabel?.text = "\(item.eventCheckIns)"
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        orgEventListViewController?.seachBar.endEditing(true)
     }
     
     /*
