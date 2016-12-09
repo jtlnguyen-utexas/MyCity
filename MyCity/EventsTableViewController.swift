@@ -27,6 +27,8 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
     var food: Bool = false
     var free: Bool = false
     
+    var radius = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -74,6 +76,24 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OrgEventListTableViewController.updateTable), userInfo: nil, repeats: true)
         // Start getting location
         locationManager.startUpdatingLocation()
+        
+        let ref = FIRDatabase.database().reference()
+        
+        // have to parse email
+        let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
+        
+        // get a firebase snapchat
+        ref.child("\(newString)pref").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get user values
+            let value = snapshot.value as? NSDictionary
+            
+            let strRad = value?["radius"] as! Float
+            self.radius = Int(strRad)
+            print("I've completed the block")
+            
+            self.updateTable()
+        })
     }
     
     func segmentedControllerChanged() {
@@ -124,6 +144,8 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
             filter = "Popularity"
         }
         
+        var currentLocation = CLLocation(latitude: self.currentLat!, longitude: self.currentLong!)
+        
         let ref = FIRDatabase.database().reference()
         ref.observeSingleEvent(of: .value, with: { snapshot in
             let enumerator = snapshot.children
@@ -134,6 +156,19 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                 if let email = value?["orgEmail"] as? String {
                     
                     // now, we have an event, so:
+                    
+                    var strEventLatitude = value?["latitude"] as! String
+                    var strEventLongitude = value?["longitude"] as! String
+                    
+                    var eventLatitude = Double(strEventLatitude)
+                    var eventLongitude = Double(strEventLongitude)
+                    
+                    
+                    var coordinate₁ = CLLocation(latitude: eventLatitude!, longitude: eventLongitude!)
+                    
+                    let distanceInMiles = Int(currentLocation.distance(from: coordinate₁) / 1609)
+                    
+                    if distanceInMiles <= self.radius {
                     
                     // Get Event Date
                     let date = Date()
@@ -195,7 +230,8 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
                             self.events.sort(by: self.eventPopularityComparator)
                         }
                     }
-                    }
+                }
+                }
                 }
             }
         })
