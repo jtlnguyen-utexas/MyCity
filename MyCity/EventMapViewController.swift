@@ -21,6 +21,12 @@ class EventMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     var initialLocationSet = false
     var events = [Event]()
     
+    var userLocation = CLLocation()
+    
+    var radius = 0
+    
+    var currentUser: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ViewDidLoad() - Map")
@@ -48,6 +54,25 @@ class EventMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         updateEventList()
 //        placePins()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let ref = FIRDatabase.database().reference()
+        
+        // have to parse email
+        let newString = ((currentUser?.emailAddress)! as NSString).replacingOccurrences(of: ".", with: "@")
+        
+        // get a firebase snapchat
+        ref.child("\(newString)pref").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get user values
+            let value = snapshot.value as? NSDictionary
+            
+            let strRad = value?["radius"] as! Float
+            self.radius = Int(strRad)
+            
+            self.updateEventList()
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,6 +91,7 @@ class EventMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         let userLocation:CLLocation = locations[0]
         let currentLong = userLocation.coordinate.longitude;
         let currentLat = userLocation.coordinate.latitude;
+        self.userLocation = userLocation
         
         // Center Map Location upon current Location only once
         if !initialLocationSet {
@@ -87,21 +113,33 @@ class EventMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
                 
                 // see if this object has this field (if so, its an event)
                 if let email = value?["orgEmail"] as? String {
-                print("Event Object!")
+                    print("Event Object!")
                     // now, we have an event, so:
+                    
+                    var strEventLatitude = value?["latitude"] as! String
+                    var strEventLongitude = value?["longitude"] as! String
+                    
+                    var eventLatitude = Double(strEventLatitude)
+                    var eventLongitude = Double(strEventLongitude)
+                    
+                    var coordinate₁ = CLLocation(latitude: eventLatitude!, longitude: eventLongitude!)
+                    
+                    let distanceInMiles = Int(self.userLocation.distance(from: coordinate₁) / 1609)
+                    
+                    if distanceInMiles <= self.radius {
                         
                         // have to add all ongoing events first
                         let date = Date()
-                    
+                        
                         let formatter = DateFormatter()
                         formatter.dateFormat = "MM/dd/yy, hh:mm aa"
-                    
-//                        let startEvent : String = value?["eventStart"] as! String
-//                        let startDate = formatter.date(from: startEvent)
-                    
+                        
+                        //                          let startEvent : String = value?["eventStart"] as! String
+                        //                          let startDate = formatter.date(from: startEvent)
+                        
                         let endEvent : String = value?["eventEnd"] as! String
                         let endDate = formatter.date(from: endEvent)
-                    
+                        
                         // Only Show Events that are currently happening or that are going to happen at some point in the future
                         if endDate! >= date {
                             print("Valid Event Date!")
@@ -115,10 +153,12 @@ class EventMapViewController: UIViewController, MKMapViewDelegate, CLLocationMan
                                 self.events.append(event)
                             }
                         }
-                
-                    
+                        
+                    }
                 }
+                self.mapView.removeAnnotations(self.mapView.annotations)
                 self.placePins()
+                
             }
         })
     }

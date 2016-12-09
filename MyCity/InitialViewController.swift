@@ -152,6 +152,10 @@ class InitialViewController: UIViewController, UITextFieldDelegate {
             let eventListViewController = navBarController.topViewController as! EventListViewController
             eventListViewController.currentUser = self.currentUser
             
+            let navMapViewController = tabBarController.viewControllers?[1] as! UINavigationController
+            let eventMapViewController = navMapViewController.topViewController as! EventMapViewController
+            eventMapViewController.currentUser = self.currentUser
+            
             let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
             let settingsViewController = navSettingsViewController.topViewController as! SettingsViewController
             settingsViewController.currentUser = self.currentUser

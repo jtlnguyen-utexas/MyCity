@@ -120,6 +120,10 @@ class UserCreateViewController: UIViewController, UITextFieldDelegate {
             let tableViewController = tabBarController.viewControllers?[0] as! EventsTableViewController
             tableViewController.currentUser = self.currentUser
             
+            let navMapViewController = tabBarController.viewControllers?[1] as! UINavigationController
+            let eventMapViewController = navMapViewController.topViewController as! EventMapViewController
+            eventMapViewController.currentUser = self.currentUser
+            
             let navSettingsViewController = tabBarController.viewControllers?[2] as! UINavigationController
             let settingsViewController = navSettingsViewController.topViewController as! SettingsViewController
             settingsViewController.currentUser = self.currentUser
