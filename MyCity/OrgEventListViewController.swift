@@ -19,7 +19,7 @@ class OrgEventListViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        seachBar.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {

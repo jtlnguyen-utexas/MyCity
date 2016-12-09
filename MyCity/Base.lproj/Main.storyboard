@@ -660,17 +660,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FlI-sR-odA">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FlI-sR-odA">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="GUT-xU-tNU" kind="embed" identifier="eventListSegue" id="Wah-fU-tcV"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="FlI-sR-odA" firstAttribute="bottom" secondItem="XSa-aT-OIl" secondAttribute="top" id="tgf-LB-Kh5"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FHU-RV-NY5">
                         <nil key="title"/>

@@ -40,9 +40,6 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         
         eventListViewController?.filterControl.addTarget(self, action: #selector(self.segmentedControllerChanged), for: .allEvents)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.touchOutsideSearchBar))
-        self.tableView.addGestureRecognizer(tap)
-        
         // Core Location Data
         if CLLocationManager.locationServicesEnabled() {
             print("Location Services Enabled!")
@@ -68,10 +65,7 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         currentLat = userLocation.coordinate.latitude;
     }
     
-    func tappedTableView() {
-        eventListViewController?.searchBar.endEditing(true)
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(OrgEventListTableViewController.updateTable), userInfo: nil, repeats: true)
         // Start getting location
@@ -266,10 +260,6 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func touchOutsideSearchBar(sender:UITapGestureRecognizer) {
-        eventListViewController?.searchBar.endEditing(true)
-        sender.cancelsTouchesInView = false
-    }
 
     // MARK: - Table view data source
 
@@ -283,10 +273,6 @@ class EventsTableViewController: UITableViewController, CLLocationManagerDelegat
         return self.events.count
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        eventListViewController?.searchBar.endEditing(true)
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "userEventCell", for: indexPath)

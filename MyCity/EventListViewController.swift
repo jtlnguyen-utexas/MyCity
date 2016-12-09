@@ -8,31 +8,21 @@
 
 import UIKit
 
-class EventListViewController: UIViewController, UISearchBarDelegate {
+class EventListViewController: UIViewController {
     
     var currentUser: User?
 
-    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var filterControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.        
-        searchBar.delegate = self
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.searchBar.endEditing(true)
     }
     
     // MARK: - Navigation

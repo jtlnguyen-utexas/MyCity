@@ -22,7 +22,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var endField: UITextField!
     
     @IBOutlet var eventTagsField: UITextField!
-    @IBOutlet var imageView: UIImageView!
     @IBOutlet var eventDescriptionField: UITextField!
     
     @IBOutlet var eventMsgLabel: UILabel!
@@ -31,9 +30,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleImageSelector)))
-        imageView.isUserInteractionEnabled = true
-        
         startField.delegate = self
         endField.delegate = self
         
@@ -74,10 +70,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func handleImageSelector() {
-        print("Clicked on Image")
-    }
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         dateField = textField.text
         let datePicker = UIDatePicker()
@@ -100,10 +92,5 @@ class AddEventViewController: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
